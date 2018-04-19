@@ -17,19 +17,16 @@ CREATE TABLE `options`.`user` (
   `password` VARCHAR(45) NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NULL,
-  `date_of_birth` DATE  NULL,
-  `gender` VARCHAR(1)  NULL,
   `email` VARCHAR(80) NULL,
-  `house_no` VARCHAR(45) NULL,
-  `street` VARCHAR(80) NULL,
-  `location` VARCHAR(120) NULL,
-  `city` VARCHAR(80) NULL,
-  `state` VARCHAR(2) NULL,
-  `pin_code` VARCHAR(6) NULL,
-  `residence_phone` VARCHAR(15) NULL,
-  `mobile_phone` VARCHAR(15) NULL,
-  `office_phone` VARCHAR(15) NULL,
-  `category` VARCHAR(2) NULL,
+  `address_line1` VARCHAR(200) NULL,
+  `address_line2` VARCHAR(200) NULL,
+  `city` VARCHAR(100) NULL,
+  `state` VARCHAR(20) NULL,
+  `zip` VARCHAR(10) NULL,
+  `country_code` VARCHAR(3) NULL,
+  `country_name` VARCHAR(30) NULL,
+  `phone_number` VARCHAR(15) NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`));
   CREATE TABLE `options`.`user_role` (
      `user_role_id` VARCHAR(32) NOT NULL,
@@ -46,7 +43,7 @@ CREATE TABLE `options`.`user` (
         `team_name` VARCHAR(100) NOT NULL,
        `admin_id` VARCHAR(32) NOT NULL,
        `user_id` VARCHAR(32) NOT NULL,
-       `create_date` TIME NOT NULL,
+       `create_date` datetime NOT NULL,
        `active` VARCHAR(1) NOT NULL,
        PRIMARY KEY (`team_id`));
 
@@ -54,7 +51,7 @@ CREATE TABLE `options`.`user` (
          `team_member_id` VARCHAR(32) NOT NULL,
          `team_id` VARCHAR(32) NOT NULL,
        `user_id` VARCHAR(32) NOT NULL,
-       `create_date` TIME NOT NULL,
+       `create_date` datetime NOT NULL,
        `active` VARCHAR(1) NOT NULL,
        PRIMARY KEY (`team_member_id`));
 
@@ -64,6 +61,6 @@ CREATE TABLE `options`.`admin_privilege` (
        `max_team_count` INTEGER NOT NULL,
        `max_team_member_count` INTEGER NOT NULL,
        `trial_period_end_date` DATE NOT NULL,
-       `create_date` TIME NOT NULL,
+       `create_date` datetime NOT NULL,
        `active` VARCHAR(1) NOT NULL,
        PRIMARY KEY (`admin_privilege_id`));

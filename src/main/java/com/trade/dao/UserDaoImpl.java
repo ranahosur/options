@@ -25,15 +25,15 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
   public void register(User user) {
 
-    String sql = "insert into user(user_id, username, password, first_name, last_name, date_of_birth, gender, email, house_no, street, location" +
-            ", city,  state, pin_code, residence_phone, mobile_phone, office_phone, category )" +
-            "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+    String sql = "insert into user(user_id, username, password, first_name, last_name, email, address_line1, address_line2, " +
+            " city,  state, zip, country_code,country_name,phone_number )" +
+            "values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
     user.setUserId(generateId());
     logger.debug("User created with userid "+user.getUserId() + " for username "+ user.getUsername());
     jdbcTemplate.update(sql, new Object[] { user.getUserId(),user.getUsername(), user.getPassword(), user.getFirstName(),
-        user.getLastName(), user.getDateOfBirth(),user.getGender(),user.getEmail(), user.getHouseNo(),user.getStreet(),user.getLocation(),user.getCity(),  user.getState(),
-            user.getPinCode(),user.getResidencePhone(),user.getMobilePhone(),user.getOfficePhone(),user.getCategory()});
+        user.getLastName(), user.getEmail(), user.getAddressLine1(),user.getAddressLine2(),user.getCity(),  user.getState(),
+            user.getZip(),user.getCountryCode(), user.getCountryName(),  user.getPhoneNumber()});
   }
 
   public User validateUser(Login login) {
@@ -55,11 +55,19 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     return users.size() > 0 ? users.get(0) : null;
   }
 
-  public void updateUser(User user) {
-    String sql = "UPDATE user SET first_name =?, last_name = ? , email = ?, house_no = ?, "
-            + "street = ?, location = ? , city = ? , pin_code = ? , residence_phone = ? , mobile_phone = ? , office_phone = ?  WHERE username = ?";
-    jdbcTemplate.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(), user.getHouseNo(), user.getStreet(),
-           user.getLocation(), user.getCity(), user.getPinCode(), user.getResidencePhone(), user.getMobilePhone(), user.getOfficePhone(), user.getUsername());
+    public User findUserByUserId(String userId) {
+        String sql = "select * from user where user_Id='" + userId +"'";
+
+        List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+        return users.size() > 0 ? users.get(0) : null;
+    }
+
+    public void updateUser(User user) {
+    String sql = "UPDATE user SET first_name =?, last_name = ? , email = ?, address_line1 = ?, "
+            + "address_line2 = ?,  city = ? , zip = ? , country_code = ? , country_name = ? , phone_number = ?  WHERE user_id = ?";
+    jdbcTemplate.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(), user.getAddressLine1(), user.getAddressLine2(),
+            user.getCity(), user.getZip(),user.getCountryCode(),user.getCountryName(), user.getPhoneNumber(), user.getUserId());
 
   }
 
@@ -84,15 +92,15 @@ class UserMapper implements RowMapper<User> {
     user.setFirstName(rs.getString("first_name"));
     user.setLastName(rs.getString("last_name"));
     user.setEmail(rs.getString("email"));
-    user.setHouseNo(rs.getString("house_no"));
-    user.setStreet(rs.getString("street"));
+    user.setAddressLine1(rs.getString("address_line1"));
+    user.setAddressLine2(rs.getString("address_line2"));
     user.setState(rs.getString("state"));
-    user.setLocation(rs.getString("location"));
+    user.setCountryCode(rs.getString("country_code"));
+    user.setCountryName(rs.getString("country_name"));
     user.setCity(rs.getString("city"));
-    user.setPinCode(rs.getString("pin_code"));
-    user.setResidencePhone(rs.getString("residence_phone"));
-    user.setMobilePhone(rs.getString("mobile_phone"));
-    user.setOfficePhone(rs.getString("office_phone"));
+    user.setZip(rs.getString("zip"));
+    user.setPhoneNumber(rs.getString("phone_number"));
+
 
     return user;
   }

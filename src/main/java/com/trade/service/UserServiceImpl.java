@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import javax.swing.text.html.Option;
 import java.sql.Date;
+import java.util.List;
 
 
 public class UserServiceImpl implements UserService {
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService {
     createAdmin(user,userRoleType,null);
   }
   public void createAdmin(User user, String userRoleType,AdminPrivilege adminPrivilege) {
-    logger.debug("Information received: username "+ user.getUsername() + " firstname "+ user.getFirstName() + " lastname "+ user.getLastName() + " location "+ user.getLocation());
+    logger.debug("Information received: username "+ user.getUsername() + " firstname "+ user.getFirstName() + " lastname "+ user.getLastName());
     userDao.register(user);
     Role role = roleDao.findRole(userRoleType);
     UserRole userRole = new UserRole();
@@ -92,19 +93,29 @@ public class UserServiceImpl implements UserService {
 
   }
 
+  public List<AdminPrivilege> findAllSubscriptions() {
+    return adminPrivilegeDao.findAdminPrivilegeAll();
+  }
+
   public User validateUser(Login login) {
     logger.debug("Entry into validateUser with usename "+login.getUsername());
     User user =  userDao.validateUser(login);
+
     if(user != null) {
-      user.setUserPaymentServiceList(paymentServiceManager.findPaymentServiceRegistered(user.getUsername()));
+        UserRole userRole = userRoleDao.findUserRoleByUserId(user.getUserId());
+        user.setUserRole(userRole);
     }
     return user;
   }
 
-  public User findUser(String username) {
-    logger.debug("Entry into findUser with usename "+username);
+  public User findUserByUsername(String username) {
+    logger.debug("Entry into findUserByUsername with usename "+username);
     return userDao.findUser(username);
+  }
 
+  public User findUserByUserId(String userId) {
+    logger.debug("Entry into findUserByUsername with userId "+userId);
+    return userDao.findUserByUserId(userId);
   }
 
   public void modifyUser(User user) {

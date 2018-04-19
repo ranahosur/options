@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway/Raleway-Bold.eot");
+  src: local("Raleway Bold"), local("Raleway-Bold"), url("../fonts/raleway/Raleway-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/Raleway-Bold.woff2") format("woff2"), url("../fonts/raleway/Raleway-Bold.woff") format("woff"), url("../fonts/raleway/Raleway-Bold.ttf") format("truetype"), url("../fonts/raleway/Raleway-Bold.svg#Raleway-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway/Raleway-SemiBold.eot");
+  src: local("Raleway SemiBold"), local("Raleway-SemiBold"), url("../fonts/raleway/Raleway-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/Raleway-SemiBold.woff2") format("woff2"), url("../fonts/raleway/Raleway-SemiBold.woff") format("woff"), url("../fonts/raleway/Raleway-SemiBold.ttf") format("truetype"), url("../fonts/raleway/Raleway-SemiBold.svg#Raleway-SemiBold") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway/Raleway-Medium.eot");
+  src: local("Raleway Medium"), local("Raleway-Medium"), url("../fonts/raleway/Raleway-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/Raleway-Medium.woff2") format("woff2"), url("../fonts/raleway/Raleway-Medium.woff") format("woff"), url("../fonts/raleway/Raleway-Medium.ttf") format("truetype"), url("../fonts/raleway/Raleway-Medium.svg#Raleway-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway/Raleway-Regular.eot");
+  src: local("Raleway"), local("Raleway-Regular"), url("../fonts/raleway/Raleway-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/Raleway-Regular.woff2") format("woff2"), url("../fonts/raleway/Raleway-Regular.woff") format("woff"), url("../fonts/raleway/Raleway-Regular.ttf") format("truetype"), url("../fonts/raleway/Raleway-Regular.svg#Raleway-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway/Raleway-ExtraBold.eot");
+  src: local("Raleway ExtraBold"), local("Raleway-ExtraBold"), url("../fonts/raleway/Raleway-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/Raleway-ExtraBold.woff2") format("woff2"), url("../fonts/raleway/Raleway-ExtraBold.woff") format("woff"), url("../fonts/raleway/Raleway-ExtraBold.ttf") format("truetype"), url("../fonts/raleway/Raleway-ExtraBold.svg#Raleway-ExtraBold") format("svg");
+  font-weight: 800;
+  font-style: normal; }
+/* line 5, ../scss/reset.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 8, ../scss/reset.scss */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+/* line 15, ../scss/reset.scss */
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  min-width: 992px;
+  font-size: 16px;
+  line-height: 1;
+  margin: 0; }
+
+/* line 22, ../scss/reset.scss */
+iframe {
+  border: 0; }
+
+/* line 25, ../scss/reset.scss */
+main {
+  display: block; }
+
+/* line 28, ../scss/reset.scss */
+ul,
+ol {
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 0; }
+
+/* line 34, ../scss/reset.scss */
+li {
+  display: block; }
+
+/* line 37, ../scss/reset.scss */
+dl {
+  margin-bottom: 0;
+  margin-top: 0; }
+
+/* line 41, ../scss/reset.scss */
+dd {
+  margin-left: 0; }
+
+/* line 44, ../scss/reset.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  margin-bottom: 0;
+  margin-top: 0; }
+
+/* line 54, ../scss/reset.scss */
+blockquote {
+  padding: 0;
+  margin: 0; }
+
+/* line 58, ../scss/reset.scss */
+p {
+  margin-bottom: 0;
+  margin-top: 0; }
+
+/* line 62, ../scss/reset.scss */
+sup {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  top: -.5em; }
+
+/* line 69, ../scss/reset.scss */
+strong {
+  font-weight: bold; }
+
+/* line 72, ../scss/reset.scss */
+figure {
+  margin: 0; }
+
+/* line 75, ../scss/reset.scss */
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  border: 0; }
+
+/* line 81, ../scss/reset.scss */
+a {
+  text-decoration: none;
+  color: inherit; }
+
+/* line 85, ../scss/reset.scss */
+button {
+  -webkit-font-smoothing: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  overflow: visible;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  border: 0;
+  margin: 0; }
+
+/* line 98, ../scss/reset.scss */
+::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+/* line 102, ../scss/reset.scss */
+.group:after {
+  display: table;
+  content: "";
+  clear: both; }
+
+/* line 107, ../scss/reset.scss */
+.fl {
+  float: left; }
+
+/* line 110, ../scss/reset.scss */
+.fr {
+  float: right; }
+
+/* line 120, ../scss/reset.scss */
+select::-ms-expand {
+  display: none; }
+
+/* Setting the clickable table expansion */
+.clickableRow {
+    cursor: pointer;
+}
+.levelTwo {
+    background-color: #FF8C00;
+    color: black;
+}
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+.grid .tick line {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.grid .tick text {
+    font: 10px sans-serif;
+    font-size: 12;
+    font-family: Helvetica, sans-serif;
+}
+.grid path {
+      stroke-width: 0;
+}
+.modal {
+    display: block;
+}
+.axis {
+    font: 10px sans-serif;
+}
+.axis text {
+    font-size: 12; 
+    font-family: Helvetica, sans-serif;
+}
+
+.axis path {
+    stroke-width: 0
+}
+.bar-text {
+    font: 16px sans-serif;
+    fill: white;
+}

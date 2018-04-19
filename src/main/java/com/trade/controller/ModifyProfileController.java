@@ -1,6 +1,5 @@
 package com.trade.controller;
 
-import com.trade.model.Login;
 import com.trade.model.User;
 import com.trade.service.UserService;
 import org.apache.log4j.Logger;
@@ -32,10 +31,10 @@ public class ModifyProfileController {
         String sessionUsername = request.getSession().getAttribute("username").toString();
         logger.debug("Username retrieved from session is "+ sessionUsername);
         logger.debug("Username retrieved from request model is "+ user.getUsername());
-        user = userService.findUser(user.getUsername());
+        user = userService.findUserByUsername(user.getUsername());
 
         if (null != user) {
-            logger.debug("User is validated , redirecting to Welcome for modifyProfile "+ user.getFirstName() + " lastname "+ user.getLastName() + " houseNo "+ user.getHouseNo() + " street "+ user.getStreet() + " city "+ user.getCity());
+            logger.debug("User is validated , redirecting to Welcome for modifyProfile "+ user.getFirstName() + " lastname "+ user.getLastName() + " houseNo "+ user.getAddressLine1() + " street "+ user.getAddressLine2() + " city "+ user.getCity());
             mav = new ModelAndView("modifyProfile");
             mav.addObject("user",user);
 
@@ -65,8 +64,8 @@ public class ModifyProfileController {
         mav.addObject("message","Profile Update Successfully");
         mav.addObject("firstname", user.getFirstName());
         mav.addObject("lastname", user.getLastName());
-        mav.addObject("houseNo", user.getHouseNo());
-        mav.addObject("street", user.getStreet());
+        mav.addObject("houseNo", user.getAddressLine1());
+        mav.addObject("street", user.getAddressLine2());
         mav.addObject("city", user.getCity());
         mav.addObject("username", user.getUsername());
 

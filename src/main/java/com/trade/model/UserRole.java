@@ -7,6 +7,7 @@ public class UserRole {
     private String userRoleId;
     private String userId;
     private String roleId;
+    private String role;
 
     public String getUserRoleId() {
         return userRoleId;
@@ -30,5 +31,13 @@ public class UserRole {
 
     public void setRoleId(String roleId) {
         this.roleId = roleId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

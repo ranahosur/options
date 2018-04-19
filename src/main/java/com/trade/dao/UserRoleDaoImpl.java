@@ -32,7 +32,9 @@ public class UserRoleDaoImpl extends BaseDaoImpl implements UserRoleDao {
     }
 
     public UserRole findUserRoleByUserId(String userId) {
-        String sql = "select * from user_role where user_id ='" + userId +"'";
+        String sql = "select * from user_role ur " +
+                " join role r on r.role_id = ur.role_id" +
+                " where user_id ='" + userId +"'";
         List<UserRole> roles = jdbcTemplate.query(sql, new UserRoleMapper());
         return roles.size() > 0 ? roles.get(0) : null;
     }
@@ -50,6 +52,7 @@ class UserRoleMapper implements RowMapper<UserRole> {
         userRole.setRoleId(rs.getString("role_id"));
         userRole.setUserRoleId(rs.getString("user_role_id"));
         userRole.setUserId(rs.getString("user_id"));
+        userRole.setRole(rs.getString("role"));
         return userRole;
     }
 }

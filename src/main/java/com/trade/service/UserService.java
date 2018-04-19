@@ -5,6 +5,8 @@ import com.trade.model.Login;
 import com.trade.model.Team;
 import com.trade.model.User;
 
+import java.util.List;
+
 public interface UserService {
 
   void createAdmin(User user);
@@ -15,12 +17,16 @@ public interface UserService {
 
   User validateUser(Login login);
 
-  User findUser(String username);
+  User findUserByUsername(String username);
 
   void modifyUser(User user);
 
   void updatePassword(String username, String password);
 
   void createTeam(Team team);
+
+  List<AdminPrivilege> findAllSubscriptions();
+
+  User findUserByUserId(String userId);
 
 }

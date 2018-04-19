@@ -3,10 +3,13 @@ package com.trade.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.trade.dao.UserDao;
+import com.trade.model.AdminPrivilege;
 import com.trade.model.Login;
+import com.trade.model.OptionsConstants;
 import com.trade.service.EmailService;
+import com.trade.util.CountryUtil;
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,7 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.trade.model.User;
 import com.trade.service.UserService;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -27,6 +31,9 @@ public class LoginController {
   private static final Logger logger = Logger.getLogger(LoginController.class);
   @Autowired
   UserService userService;
+
+  @Autowired
+  UserDao userDao;
 
   @Autowired
   EmailService emailService;
@@ -61,13 +68,13 @@ public class LoginController {
 
     ModelAndView mav = null;
     if(username != null){
-      User user = userService.findUser(username);
+      User user = userService.findUserByUsername(username);
       mav = new ModelAndView("welcome");
       mav.addObject("user",user);
       mav.addObject("firstname", user.getFirstName());
       mav.addObject("lastname", user.getLastName());
-      mav.addObject("houseNo", user.getHouseNo());
-      mav.addObject("street", user.getStreet());
+      mav.addObject("houseNo", user.getAddressLine1());
+      mav.addObject("street", user.getAddressLine2());
       mav.addObject("city", user.getCity());
       mav.addObject("username", user.getUsername());
     }
@@ -88,22 +95,45 @@ public class LoginController {
 
 
 
-  @RequestMapping(value = "/loginProcessNew", method = RequestMethod.POST)
-  public ModelAndView loginProcessNew(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
+  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
                                    @ModelAttribute("login") Login login) {
     ModelAndView mav = null;
 
     User user = userService.validateUser(login);
 
-    if (null != user) {
-      logger.debug("User is validated , redirecting to Welcome for firstname "+ user.getFirstName() + " lastname "+ user.getLastName() + " houseNo "+ user.getHouseNo() + " street "+ user.getStreet() + " city "+ user.getCity());
+    if (null != user && null != user.getUserRole()) {
+      logger.debug("User is validated , redirecting to Welcome for firstname "+ user.getFirstName() + " lastname "+ user.getLastName() + " houseNo "+ user.getAddressLine1() + " street "+ user.getAddressLine2() + " city "+ user.getCity());
       request.getSession().setAttribute("username",user.getUsername());
-      mav = new ModelAndView("welcome");
+      if(OptionsConstants.ROLE_SUPER_ADMIN.equals(user.getUserRole().getRole())) {
+        mav = new ModelAndView("welcomeSAdmin");
+        List<AdminPrivilege> adminPrivileges = userService.findAllSubscriptions();
+        if(adminPrivileges == null){
+          logger.debug("There are no existing subscriptions found");
+            adminPrivileges = new ArrayList<AdminPrivilege>();
+        }
+        else{
+          for(AdminPrivilege adminPrivilege : adminPrivileges){
+            User adminUser = userService.findUserByUserId(adminPrivilege.getUserId());
+            adminPrivilege.setUser(adminUser);
+          }
+          logger.debug("There are  existing subscriptions found = count is "+ adminPrivileges.size());
+        }
+        user.setAdminPrivileges(adminPrivileges);
+        mav.addObject("countries",CountryUtil.findAllCountries());
+        mav.addObject("adminPrivileges",adminPrivileges);
+      }
+      else if(OptionsConstants.ROLE_ADMIN.equals(user.getUserRole().getRole())) {
+        mav = new ModelAndView("welcomeAdmin");
+      }
+      else {
+        mav = new ModelAndView("welcomeParticipant");
+      }
       mav.addObject("user",user);
       mav.addObject("firstname", user.getFirstName());
       mav.addObject("lastname", user.getLastName());
-      mav.addObject("houseNo", user.getHouseNo());
-      mav.addObject("street", user.getStreet());
+      mav.addObject("houseNo", user.getAddressLine1());
+      mav.addObject("street", user.getAddressLine2());
       mav.addObject("city", user.getCity());
       mav.addObject("username", user.getUsername());
     } else {
@@ -143,7 +173,7 @@ public class LoginController {
                                           @ModelAttribute("login") Login login) {
     String username = login.getUsername();
     logger.debug("Entry into resetPasswordVerify with username "+ username);
-    User user = userService.findUser(username);
+    User user = userService.findUserByUsername(username);
     if(user == null){
       logger.error("There is no username with "+ username);
       ModelAndView mav = new ModelAndView("resetPassword");

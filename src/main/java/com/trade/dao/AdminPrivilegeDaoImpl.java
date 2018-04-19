@@ -31,7 +31,9 @@ public class AdminPrivilegeDaoImpl extends BaseDaoImpl implements AdminPrivilege
     }
 
     public AdminPrivilege findAdminPrivilegeByUserId(String userId) {
-        String sql = "select * from admin_privilege where user_id = '" + userId + "'";
+        String sql = "select * from admin_privilege ap " +
+                    " join user u on u.user_id = ap.user_id " +
+                    " where ap.user_id = '" + userId + "'";
         List<AdminPrivilege> adminPrivileges = jdbcTemplate.query(sql, new AdminPrivilegeMapper());
         if(adminPrivileges != null && adminPrivileges.size() > 0){
             return adminPrivileges.get(0);
@@ -39,6 +41,26 @@ public class AdminPrivilegeDaoImpl extends BaseDaoImpl implements AdminPrivilege
         else{
             return null;
         }
+    }
+
+    public AdminPrivilege findAdminPrivilegeByAdminPrivilegeId(String adminPrivilegeId) {
+        String sql = "select * from admin_privilege ap " +
+                " join user u on u.user_id = ap.user_id " +
+                " where ap.admin_privilege_id = '" + adminPrivilegeId + "'";
+        List<AdminPrivilege> adminPrivileges = jdbcTemplate.query(sql, new AdminPrivilegeMapper());
+        if(adminPrivileges != null && adminPrivileges.size() > 0){
+            return adminPrivileges.get(0);
+        }
+        else{
+            return null;
+        }
+    }
+
+    public List<AdminPrivilege>  findAdminPrivilegeAll() {
+        String sql = "select * from admin_privilege ap" +
+                " join user u on u.user_id = ap.user_id " +
+                " order by ap.create_date desc ";
+        return jdbcTemplate.query(sql, new AdminPrivilegeMapper());
     }
 
     public void updateAdminPrivilege(AdminPrivilege teamMember) {
@@ -66,6 +88,11 @@ public class AdminPrivilegeDaoImpl extends BaseDaoImpl implements AdminPrivilege
             user.setTrialPeriodEndDate(rs.getDate("trial_period_end_date"));
             user.setActive("Y".equals(rs.getString("active")));
             user.setCreateDate(rs.getTimestamp("create_date"));
+            user.setFirstName(rs.getString("first_name"));
+            user.setLastName(rs.getString("last_name"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+
             return user;
         }
     }

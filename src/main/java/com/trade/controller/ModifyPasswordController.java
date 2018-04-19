@@ -57,7 +57,7 @@ public class ModifyPasswordController {
         } else {
             //this is just  the first entry to controller, so display the screen with no messaging
             mav = new ModelAndView("modifyPassword");
-            mav.addObject("user", userService.findUser(sessionUsername));
+            mav.addObject("user", userService.findUserByUsername(sessionUsername));
 
         }
 

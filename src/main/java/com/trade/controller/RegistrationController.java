@@ -33,7 +33,7 @@ public class RegistrationController {
   @RequestMapping(value = "/welcome", method = RequestMethod.GET)
   public ModelAndView showDashboardGet(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("welcome");
-    User user = userService.findUser(request.getSession().getAttribute("username").toString());
+    User user = userService.findUserByUsername(request.getSession().getAttribute("username").toString());
     mav.addObject("user", user);
     return mav;
   }
@@ -41,7 +41,7 @@ public class RegistrationController {
   @RequestMapping(value = "/welcome", method = RequestMethod.POST)
   public ModelAndView showDashboardPost(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("welcome");
-    User user = userService.findUser(request.getSession().getAttribute("username").toString());
+    User user = userService.findUserByUsername(request.getSession().getAttribute("username").toString());
     mav.addObject("user", user);
     return mav;
   }
@@ -51,7 +51,7 @@ public class RegistrationController {
   public ModelAndView addUserNew(HttpServletRequest request, HttpServletResponse response,
                               @ModelAttribute("user") User user) {
 
-    User existUser = userService.findUser(user.getUsername());
+    User existUser = userService.findUserByUsername(user.getUsername());
     if(existUser != null){
       logger.error("username already exists "+ user.getUsername());
       ModelAndView mav = new ModelAndView("registernew");

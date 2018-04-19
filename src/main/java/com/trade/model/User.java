@@ -1,6 +1,7 @@
 package com.trade.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class User {
@@ -11,25 +12,22 @@ public class User {
   private String firstName;
   private String lastName;
   private String email;
-  private String houseNo;
-  private String street;
-  private String location;
+  private String addressLine1;
+  private String addressLine2;
   private String city;
   private String state;
-  private String pinCode;
-  private String residencePhone;
-  private String mobilePhone;
-  private String officePhone;
-  private String day;
-  private String month;
-  private String year;
-  private Date dateOfBirth;
-  private String gender;
-  private String category;
+  private String zip;
+  private String phoneNumber;
+  private Timestamp createDate;
+  private String countryCode;
+  private String countryName;
+
   private String newpassTxt;
   private String repassTxt;
 
-  List<UserPaymentService> userPaymentServiceList;
+  private UserRole userRole;
+
+  private List<AdminPrivilege> adminPrivileges;
 
 
   public String getUserId() {
@@ -80,28 +78,20 @@ public class User {
     this.email = email;
   }
 
-  public String getHouseNo() {
-    return houseNo;
+  public String getAddressLine1() {
+    return addressLine1;
   }
 
-  public void setHouseNo(String houseNo) {
-    this.houseNo = houseNo;
+  public void setAddressLine1(String addressLine1) {
+    this.addressLine1 = addressLine1;
   }
 
-  public String getStreet() {
-    return street;
+  public String getAddressLine2() {
+    return addressLine2;
   }
 
-  public void setStreet(String street) {
-    this.street = street;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
+  public void setAddressLine2(String addressLine2) {
+    this.addressLine2 = addressLine2;
   }
 
   public String getCity() {
@@ -120,84 +110,44 @@ public class User {
     this.state = state;
   }
 
-  public String getPinCode() {
-    return pinCode;
+  public String getZip() {
+    return zip;
   }
 
-  public void setPinCode(String pinCode) {
-    this.pinCode = pinCode;
+  public void setZip(String zip) {
+    this.zip = zip;
   }
 
-  public String getResidencePhone() {
-    return residencePhone;
+  public String getCountryCode() {
+    return countryCode;
   }
 
-  public void setResidencePhone(String residencePhone) {
-    this.residencePhone = residencePhone;
+  public void setCountryCode(String countryCode) {
+    this.countryCode = countryCode;
   }
 
-  public String getMobilePhone() {
-    return mobilePhone;
+  public String getCountryName() {
+    return countryName;
   }
 
-  public void setMobilePhone(String mobilePhone) {
-    this.mobilePhone = mobilePhone;
+  public void setCountryName(String countryName) {
+    this.countryName = countryName;
   }
 
-  public String getOfficePhone() {
-    return officePhone;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  public void setOfficePhone(String officePhone) {
-    this.officePhone = officePhone;
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
-  public String getDay() {
-    return day;
+  public Timestamp getCreateDate() {
+    return createDate;
   }
 
-  public void setDay(String day) {
-    this.day = day;
-  }
-
-  public String getMonth() {
-    return month;
-  }
-
-  public void setMonth(String month) {
-    this.month = month;
-  }
-
-  public String getYear() {
-    return year;
-  }
-
-  public void setYear(String year) {
-    this.year = year;
-  }
-
-  public Date getDateOfBirth() {
-    return dateOfBirth;
-  }
-
-  public void setDateOfBirth(Date dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
-
-  public String getCategory() {
-    return category;
-  }
-
-  public void setCategory(String category) {
-    this.category = category;
+  public void setCreateDate(Timestamp createDate) {
+    this.createDate = createDate;
   }
 
   public String getNewpassTxt() {
@@ -216,11 +166,21 @@ public class User {
     this.repassTxt = repassTxt;
   }
 
-  public List<UserPaymentService> getUserPaymentServiceList() {
-    return userPaymentServiceList;
+  public UserRole getUserRole() {
+    return userRole;
   }
 
-  public void setUserPaymentServiceList(List<UserPaymentService> userPaymentServiceList) {
-    this.userPaymentServiceList = userPaymentServiceList;
+  public void setUserRole(UserRole userRole) {
+    this.userRole = userRole;
   }
+
+    public List<AdminPrivilege> getAdminPrivileges() {
+        return adminPrivileges;
+    }
+
+    public void setAdminPrivileges(List<AdminPrivilege> adminPrivileges) {
+        this.adminPrivileges = adminPrivileges;
+    }
+
+
 }

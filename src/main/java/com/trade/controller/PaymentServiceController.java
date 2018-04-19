@@ -74,7 +74,7 @@ public class PaymentServiceController {
                     mav = new ModelAndView("addWaterPayment");
                     UserPaymentService userPaymentService = new UserPaymentService();
                     userPaymentService.setPaymentServiceId(paymentServiceId);
-                    User user = userService.findUser(sessionUsername);
+                    User user = userService.findUserByUsername(sessionUsername);
                     userPaymentService.setUserId(user.getUserId());
                     userPaymentService.setExternalId(consumerNo);
                     userPaymentService.setStatus(SERVICE_STATUS_REGISTERED);

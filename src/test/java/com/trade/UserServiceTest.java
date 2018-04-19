@@ -6,6 +6,7 @@ import com.trade.dao.*;
 import com.trade.model.*;
 import com.trade.service.PaymentServiceManager;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Ignore
 @ContextConfiguration(locations = { "classpath:/billpayment/config/user-beans.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserServiceTest {
@@ -54,24 +56,48 @@ public class UserServiceTest {
   @Test
   public void testCreateSuperAdmin() {
 
+    String username = "superadmin";
+    User dUser = userDao.findUser(username);
+    if(dUser != null) {
+      userDao.deleteUser(dUser.getUserId());
+    }
     User user = new User();
     System.out.println("test");
-    user.setEmail("ranahosur@test.com");
-    user.setFirstName("raghu");
-    user.setLastName("An");
-    user.setUsername("raghu");
-    user.setPassword("anahosur");
+    user.setEmail("superadmin@test.com");
+    user.setFirstName("Raghuram");
+    user.setLastName("R");
+    user.setUsername(username);
+    user.setPassword("test123");
 
     userService.createAdmin(user);
 
+    User dbUser = userDao.findUser(username);
+    dbUser.setAddressLine1("London Parkway");
+    dbUser.setAddressLine2("House 27");
+    dbUser.setCity("Dublin");
+    dbUser.setState("QS");
+    dbUser.setCountryCode("UK");
+    dbUser.setCountryName("United Kingdom");
+    dbUser.setPhoneNumber("239054344");
+    userDao.updateUser(dbUser);
 
+
+
+  }
+
+  @Test
+  public void testFindAll() {
+    List<AdminPrivilege> adminPrivileges =  userService.findAllSubscriptions();
+    for (AdminPrivilege adminPrivilege : adminPrivileges){
+      System.out.println(adminPrivilege.getMaxTeamCount());
+    }
   }
 
   @Test
   public void testCreateAdmin() {
 
     String username  = "admin002";
-    User dUser = userService.findUser(username);
+    User dUser = userService.findUserByUsername(username);
     if(dUser != null) {
       AdminPrivilege adminPrivilege = adminPrivilegeDao.findAdminPrivilegeByUserId(dUser.getUserId());
       if (adminPrivilege != null) {
@@ -82,11 +108,18 @@ public class UserServiceTest {
     }
     User user = new User();
 
-    user.setEmail("ranahosur@test.com");
-    user.setFirstName("raghu");
-    user.setLastName("An");
+    user.setEmail(username+"@test.com");
+    user.setFirstName("John");
+    user.setLastName("McDonald");
     user.setUsername(username);
     user.setPassword("anahosur");
+    user.setAddressLine1("207 ashford parkway");
+    user.setAddressLine2("apt 7");
+    user.setCity("Atlanta");
+    user.setState("GA");
+    user.setCountryCode("US");
+    user.setCountryName("USA");
+    user.setPhoneNumber("735999034");
 
     userService.createAdmin(user, OptionsConstants.ROLE_ADMIN,new AdminPrivilege());
 
@@ -97,7 +130,7 @@ public class UserServiceTest {
   public void testCreateAdminWithTeam() {
 
     String username  = "admin003";
-    User dUser = userService.findUser(username);
+    User dUser = userService.findUserByUsername(username);
     if(dUser != null) {
       AdminPrivilege adminPrivilege = adminPrivilegeDao.findAdminPrivilegeByUserId(dUser.getUserId());
       if (adminPrivilege != null) {
@@ -121,11 +154,17 @@ public class UserServiceTest {
     User user = new User();
 
     user.setEmail(username+"@test.com");
-    user.setFirstName("raghu");
-    user.setLastName("An");
+    user.setFirstName("Cindy");
+    user.setLastName("Crawford");
     user.setUsername(username);
     user.setPassword("test008");
-
+    user.setAddressLine1("217 ashford parkway");
+    user.setAddressLine2("apt 17");
+    user.setCity("Dublin");
+    user.setState("GA");
+    user.setCountryCode("US");
+    user.setCountryName("USA");
+    user.setPhoneNumber("262004024");
     userService.createAdmin(user, OptionsConstants.ROLE_ADMIN,new AdminPrivilege());
 
     Team team = new Team();
