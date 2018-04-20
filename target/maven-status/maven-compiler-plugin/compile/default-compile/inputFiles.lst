@@ -32,13 +32,16 @@ C:\my projects\options\src\main\java\com\trade\model\User.java
 C:\my projects\options\src\main\java\com\trade\model\Login.java
 C:\my projects\options\src\main\java\com\trade\service\UserServiceImpl.java
 C:\my projects\options\src\main\java\com\trade\dao\TeamDao.java
+C:\my projects\options\src\main\java\com\trade\util\DAOUtil.java
 C:\my projects\options\src\main\java\com\trade\dao\TeamMemberDao.java
 C:\my projects\options\src\main\java\com\trade\dao\UserPaymentServiceDaoImpl.java
 C:\my projects\options\src\main\java\com\trade\model\Team.java
 C:\my projects\options\src\main\java\com\trade\dao\RoleDao.java
 C:\my projects\options\src\main\java\com\trade\dao\UserPaymentServiceDao.java
 C:\my projects\options\src\main\java\com\trade\service\EmailServiceImpl.java
+C:\my projects\options\src\main\java\com\trade\controller\LoginRegistrationBaseController.java
 C:\my projects\options\src\main\java\com\trade\model\AdminPrivilege.java
+C:\my projects\options\src\main\java\com\trade\controller\TeamController.java
 C:\my projects\options\src\main\java\com\trade\dao\AdminPrivilegeDaoImpl.java
 C:\my projects\options\src\main\java\com\trade\model\PaymentService.java
 C:\my projects\options\src\main\java\com\trade\dao\AdminPrivilegeDao.java

@@ -33,7 +33,9 @@ com\trade\dao\TeamMemberDaoImpl$TeamMemberMapper.class
 com\trade\service\UserService.class
 com\trade\dao\UserDaoImpl.class
 com\trade\dao\PaymentServiceDaoImpl.class
+com\trade\controller\TeamController.class
 com\trade\dao\TeamDaoImpl$TeamMapper.class
+com\trade\util\DAOUtil.class
 com\trade\dao\UserRoleDao.class
 com\trade\dao\UserPaymentServiceDao.class
 com\trade\dao\RoleMapper.class
@@ -47,6 +49,7 @@ com\trade\util\CountryUtil.class
 com\trade\dao\BaseDaoImpl.class
 com\trade\model\Team.class
 com\trade\dao\RoleDao.class
+com\trade\controller\LoginRegistrationBaseController.class
 com\trade\model\User.class
 com\trade\dao\TeamDao.class
 com\trade\service\UserServiceImpl.class

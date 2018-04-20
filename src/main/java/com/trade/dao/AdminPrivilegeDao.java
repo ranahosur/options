@@ -8,7 +8,7 @@ public interface AdminPrivilegeDao {
 
     AdminPrivilege createAdminPrivilege(AdminPrivilege adminPrivilege);
 
-    public AdminPrivilege findAdminPrivilegeByUserId(String teamId);
+    public AdminPrivilege findAdminPrivilegeByUserId(String userId);
 
     public void updateAdminPrivilege(AdminPrivilege teamMember);
 

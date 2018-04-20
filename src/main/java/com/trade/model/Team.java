@@ -13,6 +13,12 @@ public class Team {
     private User teamLogin;
     private List<TeamMember> teamMembers;
 
+    private String email;
+    private int teamCount;
+    private String status;
+
+
+
 
     public String getTeamId() {
         return teamId;
@@ -76,5 +82,29 @@ public class Team {
 
     public void setTeamMembers(List<TeamMember> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTeamCount() {
+        return teamCount;
+    }
+
+    public void setTeamCount(int teamCount) {
+        this.teamCount = teamCount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

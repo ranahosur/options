@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class LoginController {
+public class LoginController extends LoginRegistrationBaseController {
 
   private static final Logger logger = Logger.getLogger(LoginController.class);
   @Autowired
@@ -104,38 +104,7 @@ public class LoginController {
 
     if (null != user && null != user.getUserRole()) {
       logger.debug("User is validated , redirecting to Welcome for firstname "+ user.getFirstName() + " lastname "+ user.getLastName() + " houseNo "+ user.getAddressLine1() + " street "+ user.getAddressLine2() + " city "+ user.getCity());
-      request.getSession().setAttribute("username",user.getUsername());
-      if(OptionsConstants.ROLE_SUPER_ADMIN.equals(user.getUserRole().getRole())) {
-        mav = new ModelAndView("welcomeSAdmin");
-        List<AdminPrivilege> adminPrivileges = userService.findAllSubscriptions();
-        if(adminPrivileges == null){
-          logger.debug("There are no existing subscriptions found");
-            adminPrivileges = new ArrayList<AdminPrivilege>();
-        }
-        else{
-          for(AdminPrivilege adminPrivilege : adminPrivileges){
-            User adminUser = userService.findUserByUserId(adminPrivilege.getUserId());
-            adminPrivilege.setUser(adminUser);
-          }
-          logger.debug("There are  existing subscriptions found = count is "+ adminPrivileges.size());
-        }
-        user.setAdminPrivileges(adminPrivileges);
-        mav.addObject("countries",CountryUtil.findAllCountries());
-        mav.addObject("adminPrivileges",adminPrivileges);
-      }
-      else if(OptionsConstants.ROLE_ADMIN.equals(user.getUserRole().getRole())) {
-        mav = new ModelAndView("welcomeAdmin");
-      }
-      else {
-        mav = new ModelAndView("welcomeParticipant");
-      }
-      mav.addObject("user",user);
-      mav.addObject("firstname", user.getFirstName());
-      mav.addObject("lastname", user.getLastName());
-      mav.addObject("houseNo", user.getAddressLine1());
-      mav.addObject("street", user.getAddressLine2());
-      mav.addObject("city", user.getCity());
-      mav.addObject("username", user.getUsername());
+      return showWelcomePage(request,user);
     } else {
       mav = new ModelAndView("loginnew");
       logger.warn("User authentication failed, redirecting login page");

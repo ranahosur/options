@@ -39,8 +39,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         // Avoid a redirect loop for some urls
         if( !requestPath.contains("loginnew") && !requestPath.equals("/")
                 && !requestPath.contains("resetPassword")  && !requestPath.contains("loginProcessNew") && !requestPath.contains("loginProcess")
-                && !requestPath.contains("registernew") && !requestPath.contains("registerProcessNew")
-                && !requestPath.contains("css") && !requestPath.contains("images") )
+                && !requestPath.contains("registernew") && !requestPath.contains("registerProcessNew") && !requestPath.contains("verifyRegistration")
+                && !requestPath.contains("css") && !requestPath.contains("images") && !requestPath.contains("modifyPassword")
+                && !requestPath.contains("forgotPassword"))
         {
             Object usernameObj =  request.getSession().getAttribute("username");
             if(usernameObj == null || usernameObj.equals("")){

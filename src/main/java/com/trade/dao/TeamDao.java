@@ -13,4 +13,6 @@ public interface TeamDao {
     public void updateTeam(Team team);
 
     public void deleteTeam(Team team);
+
+    public Team findTeamByTeamId(String  teamId);
 }

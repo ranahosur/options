@@ -5,7 +5,7 @@ import com.trade.model.User;
 
 public interface UserDao {
 
-  void register(User user);
+  void create(User user);
 
   User validateUser(Login login);
 
@@ -18,5 +18,13 @@ public interface UserDao {
   void deleteUser(String userId);
 
   User findUserByUserId(String userId);
+
+  User findUserByEmail(String email);
+
+  void registerUser(User user);
+
+  User findUserByVerificationToken(String token);
+
+  void updateUserActive(User user);
 
 }

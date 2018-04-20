@@ -29,4 +29,14 @@ public interface UserService {
 
   User findUserByUserId(String userId);
 
+  User findUserByEmail(String email);
+
+  void registerAdmin(User user);
+
+  User findUserByVerificationToken(String token);
+
+  List<Team> findTeamsByAdminId(String adminId);
+
+  Team findTeamByTeamId(String teamid);
+
 }

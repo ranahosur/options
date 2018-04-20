@@ -36,6 +36,12 @@ public class TeamDaoImpl extends BaseDaoImpl implements TeamDao {
         return jdbcTemplate.query(sql, new TeamMapper());
     }
 
+    public Team findTeamByTeamId(String teamId) {
+        String sql = "select * from team where team_id = '" + teamId + "'";
+        List<Team> teams =  jdbcTemplate.query(sql, new TeamMapper());
+        return teams.size() > 0 ? teams.get(0) : null;
+    }
+
     public void updateTeam(Team team) {
         String sql = "UPDATE team SET active = ?, team_name = ?  WHERE team_id = ?";
         jdbcTemplate.update(sql,convertBoolean(team.isActive()) , team.getTeamName(), team.getTeamId());

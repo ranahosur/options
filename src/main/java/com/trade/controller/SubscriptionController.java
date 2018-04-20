@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SubscriptionController {
+public class SubscriptionController extends LoginRegistrationBaseController {
     private static final Logger logger = Logger.getLogger(SubscriptionController.class);
 
     @Autowired
@@ -109,38 +109,17 @@ public class SubscriptionController {
             logger.debug("created adminprivilege with id "+ adminPrivilege.getAdminPrivilegeId());
         }
 
-        return findModelForWelcome(request);
+        return findModelForWelcomeSuperAdmin(request);
     }
 
     @RequestMapping(value = "/welcomeSAdmin", method = RequestMethod.POST)
     public ModelAndView cancelSave(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("adminPrivilege") AdminPrivilege adminPrivilege) {
 
-        return findModelForWelcome(request);
+        return findModelForWelcomeSuperAdmin(request);
 
     }
 
-    private ModelAndView findModelForWelcome(HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("welcomeSAdmin");
-        mav.addObject("user", userService.findUserByUsername( ""+request.getSession().getAttribute("username")));
-        mav.addObject("countries", CountryUtil.findAllCountries());
 
-        List<AdminPrivilege> adminPrivileges = userService.findAllSubscriptions();
-        if(adminPrivileges == null){
-            logger.debug("There are no existing subscriptions found");
-            adminPrivileges = new ArrayList<AdminPrivilege>();
-        }
-        else{
-            for(AdminPrivilege adminPriv : adminPrivileges){
-                User adminUser = userDao.findUser(adminPriv.getUsername());
-                adminPriv.setUser(adminUser);
-            }
-            logger.debug("There are  existing subscriptions found = count is "+ adminPrivileges.size());
-        }
-
-        mav.addObject("countries",CountryUtil.findAllCountries());
-        mav.addObject("adminPrivileges",adminPrivileges);
-        return mav;
-    }
 
     @RequestMapping(value = "/addSubscription", method = RequestMethod.POST)
     public String addSubscription(HttpServletRequest request, HttpServletResponse response,Model model) {

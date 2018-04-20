@@ -21,6 +21,8 @@ public class User {
   private Timestamp createDate;
   private String countryCode;
   private String countryName;
+  private String verificationToken;
+  private String active;
 
   private String newpassTxt;
   private String repassTxt;
@@ -142,7 +144,23 @@ public class User {
     this.phoneNumber = phoneNumber;
   }
 
-  public Timestamp getCreateDate() {
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public Timestamp getCreateDate() {
     return createDate;
   }
 

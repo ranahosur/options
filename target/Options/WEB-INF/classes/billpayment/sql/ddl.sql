@@ -26,6 +26,8 @@ CREATE TABLE `options`.`user` (
   `country_code` VARCHAR(3) NULL,
   `country_name` VARCHAR(30) NULL,
   `phone_number` VARCHAR(15) NULL,
+  `verification_token` VARCHAR(32) NULL,
+  `active` VARCHAR(1) NULL,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`));
   CREATE TABLE `options`.`user_role` (

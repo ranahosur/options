@@ -24,7 +24,7 @@ public class ModifyPasswordController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+    @RequestMapping(value = "/modifyPasswordOld", method = RequestMethod.POST)
     public ModelAndView modifyProfile(HttpServletRequest request, HttpServletResponse response,
                                       @ModelAttribute("user") User user) {
         logger.debug("Entry into modifyProfile");

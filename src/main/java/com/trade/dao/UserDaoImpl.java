@@ -23,17 +23,17 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(User user) {
+  public void create(User user) {
 
     String sql = "insert into user(user_id, username, password, first_name, last_name, email, address_line1, address_line2, " +
-            " city,  state, zip, country_code,country_name,phone_number )" +
-            "values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+            " city,  state, zip, country_code,country_name,phone_number,verification_token,active )" +
+            "values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? )";
 
     user.setUserId(generateId());
     logger.debug("User created with userid "+user.getUserId() + " for username "+ user.getUsername());
     jdbcTemplate.update(sql, new Object[] { user.getUserId(),user.getUsername(), user.getPassword(), user.getFirstName(),
         user.getLastName(), user.getEmail(), user.getAddressLine1(),user.getAddressLine2(),user.getCity(),  user.getState(),
-            user.getZip(),user.getCountryCode(), user.getCountryName(),  user.getPhoneNumber()});
+            user.getZip(),user.getCountryCode(), user.getCountryName(),  user.getPhoneNumber(),user.getVerificationToken(),user.getActive()});
   }
 
   public User validateUser(Login login) {
@@ -63,17 +63,44 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         return users.size() > 0 ? users.get(0) : null;
     }
 
-    public void updateUser(User user) {
+  public User findUserByEmail(String email) {
+    String sql = "select * from user where email='" + email +"'";
+
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+    return users.size() > 0 ? users.get(0) : null;
+  }
+
+  public User findUserByVerificationToken(String token) {
+    String sql = "select * from user where verification_token ='" + token +"'";
+
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+    return users.size() > 0 ? users.get(0) : null;
+
+  }
+
+  public void updateUser(User user) {
     String sql = "UPDATE user SET first_name =?, last_name = ? , email = ?, address_line1 = ?, "
-            + "address_line2 = ?,  city = ? , zip = ? , country_code = ? , country_name = ? , phone_number = ?  WHERE user_id = ?";
+            + "address_line2 = ?,  city = ? , zip = ? , country_code = ? , country_name = ? , phone_number = ?, verification_token = ? , active = ?  WHERE user_id = ?";
     jdbcTemplate.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(), user.getAddressLine1(), user.getAddressLine2(),
-            user.getCity(), user.getZip(),user.getCountryCode(),user.getCountryName(), user.getPhoneNumber(), user.getUserId());
+            user.getCity(), user.getZip(),user.getCountryCode(),user.getCountryName(), user.getPhoneNumber(), user.getVerificationToken(), user.getActive(), user.getUserId());
 
   }
 
   public void updatePassword(String username, String password) {
     String sql = "UPDATE user SET password = ?  WHERE username = ?";
     jdbcTemplate.update(sql, password,username);
+  }
+
+  public void registerUser(User user) {
+    String sql = "UPDATE user SET password = ?  , username = ?, verification_token = ? where email = ? ";
+    jdbcTemplate.update(sql, user.getPassword(),user.getUsername(),user.getVerificationToken(), user.getEmail());
+  }
+
+  public void updateUserActive(User user) {
+    String sql = "UPDATE user SET active = ? where email = ? ";
+    jdbcTemplate.update(sql, user.getActive(), user.getEmail());
   }
 
   public void deleteUser(String userId) {
@@ -100,6 +127,8 @@ class UserMapper implements RowMapper<User> {
     user.setCity(rs.getString("city"));
     user.setZip(rs.getString("zip"));
     user.setPhoneNumber(rs.getString("phone_number"));
+    user.setVerificationToken(rs.getString("verification_token"));
+    user.setActive(rs.getString("active"));
 
 
     return user;

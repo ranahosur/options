@@ -13,6 +13,17 @@
 	  	<link href="${pageContext.servletContext.contextPath}/css/nouislider.css" rel="stylesheet">
 <title>Login</title>
 </head>
+<script>
+            function getPage(obj)
+            {
+            var url=obj;
+
+            document.loginForm.action=url;
+            document.loginForm.method="POST";
+            document.loginForm.submit();
+            return;
+            }
+            </script>
  <body style="" class="page-new-search">
 
         <!-- ngView:  --><div ng-view="" class="ng-scope">      <div class="page-login ng-scope">
@@ -20,22 +31,30 @@
             <img class="logo" src="${pageContext.servletContext.contextPath}/images/logo-login.jpg">
             <div class="login-form">
 
-	<form:form id="loginForm" modelAttribute="login" action="loginProcess"
+	<form:form id="loginForm" modelAttribute="login" name="loginForm" action="loginProcess"
 		method="post">
+
+        <c:if test="${not empty message}">
+            <table align="center">
+                <tr>
+                    <td style="font-style: italic; color: red;">${message}</td>
+                </tr>
+            </table>
+        </c:if>
 		<form:label path="username">Enter Your Username </form:label>
 				<form:input path="username" name="username" id="username" />
 
 				<form:label path="password">Enter Password</form:label></td>
 				<form:password path="password" name="password"
 						id="password" />
-            <input type="submit" name="submit">
+            <input type="submit" name="submit2" value = "submit">
 
 			<div class="reset-register-links group">
-                                    <!-- Forgot Password Link -->
-                                    <a class="forgot-password fl" href="http://www.twtradr.com/#">Forgot Password?</a>
-                                    <!-- New User Registration Link -->
-                                    <a class="new-user fr" href="http://www.twtradr.com/#">New User?</a>
-                                </div>
+                <!-- Forgot Password Link -->
+                <a class="forgot-password fl" href="#" onClick="getPage('forgotPassword')">Forgot Password?</a>
+                <!-- New User Registration Link -->
+                <a class="new-user fr" href="#" onClick="getPage('registernew')" >New User?</a>
+            </div>
 
 	</form:form>
 	</div>

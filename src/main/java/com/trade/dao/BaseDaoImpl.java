@@ -1,5 +1,7 @@
 package com.trade.dao;
 
+import com.trade.util.DAOUtil;
+
 import java.util.UUID;
 
 /**
@@ -9,8 +11,7 @@ public class BaseDaoImpl {
 
     protected String generateId() {
 
-        String rawId = UUID.randomUUID().toString();
-        return rawId.replace("-", "");
+        return DAOUtil.generateId();
 
     }
 
