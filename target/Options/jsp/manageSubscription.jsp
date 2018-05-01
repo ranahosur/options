@@ -3,7 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<!-- saved from url=(0032)http://www.twtradr.com/managevol -->
+
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,10 +45,11 @@
                 </div>
                 <div class="header-block nav-area">
                     <ul class="group">
-                        <li><a href="#"  onClick="getPage('welcomeSAdmin');">Subscription View</a></li>
-                        <li class="active"><a href="#" onClick="getPage('addSubscription');">New Subscription</a></li>
-                        <li><a href="#">Manage Market</a></li>
-                        <li><a href="#">Manage News</a></li>
+                        <li ><a ng-href="/welcomeSAdmin"  href="#" onClick="getPage('welcomeSAdmin');">Subscription View</a></li>
+                        <li class="active" ><a ng-href="/logout"  href="#" onClick="getPage('addSubscription');">New Subscription</a></li>
+                        <li><a href="#" onClick="getPage('inputFileMarket');">Upload Market Data</a></li>
+                        <li><a href="#" onClick="getPage('manageMarket');">Manage Market</a></li>
+                        <li><a href="http://www.twtradr.com/#">Manage News</a></li>
                     </ul>
                 </div>
                 <div class="header-block misc-area">

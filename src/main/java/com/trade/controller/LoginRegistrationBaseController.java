@@ -5,6 +5,7 @@ import com.trade.dao.TeamDao;
 import com.trade.dao.UserDao;
 import com.trade.dao.UserRoleDao;
 import com.trade.model.*;
+import com.trade.service.ParticipantService;
 import com.trade.service.UserService;
 import com.trade.util.CountryUtil;
 import org.apache.log4j.Logger;
@@ -30,10 +31,10 @@ public class LoginRegistrationBaseController {
     public AdminPrivilegeDao adminPrivilegeDao;
 
     @Autowired
-    public TeamDao teamDao;
+    public UserRoleDao userRoleDao;
 
     @Autowired
-    public UserRoleDao userRoleDao;
+    public ParticipantService participantService;
 
     protected ModelAndView showWelcomePage(HttpServletRequest request,User user) {
         UserRole userRole = userRoleDao.findUserRoleByUserId(user.getUserId());
@@ -47,7 +48,7 @@ public class LoginRegistrationBaseController {
             mav = findModelForWelcomeAdmin(user);
         }
         else {
-            mav = new ModelAndView("welcomeParticipant");
+            mav = findModelForWelcomeParticipant(user,request);
         }
         mav.addObject("user",user);
         mav.addObject("firstname", user.getFirstName());
@@ -91,6 +92,30 @@ public class LoginRegistrationBaseController {
         }
         mav.addObject("adminPrivilege",adminPrivilege);
         mav.addObject("teams",teams);
+        return mav;
+    }
+
+    protected ModelAndView findModelForWelcomeParticipant(HttpServletRequest request) {
+        String username = (String)request.getSession().getAttribute("username");
+        User user = userService.findUserByUsername(username);
+        return findModelForWelcomeParticipant(user,request);
+
+    }
+
+    protected ModelAndView findModelForWelcomeParticipant(User user,HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("welcomeParticipant");
+        Participant participant = participantService.findParticipantTransactions(user.getUserId());
+        logger.debug("participant id is "+  participant.getParticipantId());
+        List<ParticipantTransaction> participantTransactions = participant.getParticipantTransactions();
+        if(participantTransactions == null){
+            participantTransactions = new ArrayList<ParticipantTransaction>();
+        }
+        else{
+            logger.debug("Number of transactions is "+participantTransactions.size());
+        }
+        mav.addObject("participant",participant);
+        mav.addObject("participantTransactions",participantTransactions);
+        mav.addObject("screenMode",request.getParameter("screenMode"));
         return mav;
     }
 

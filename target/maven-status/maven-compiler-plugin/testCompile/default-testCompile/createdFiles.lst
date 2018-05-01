@@ -1,1 +1,4 @@
+com\trade\ParticipantServiceTest.class
 com\trade\UserServiceTest.class
+com\trade\DAOTest.class
+com\trade\MarketServiceTest.class

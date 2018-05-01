@@ -1131,16 +1131,19 @@ header.main-header {
     display: none; }
   /* line 20, ../scss/screen-01.scss */
   header.main-header .header-block {
-    width: calc(100% / 3);
+
     height: 51px;
     float: left; }
+	header.main-header .header-block.logo-area {
+		width:20%;
+	}
     /* line 25, ../scss/screen-01.scss */
     header.main-header .header-block.logo-area a {
       margin: 7.5px 0 0 11px;
       display: inline-block; }
       /* line 29, ../scss/screen-01.scss */
       header.main-header .header-block.logo-area a.desktop-logo img {
-        width: 344px;
+        width: 244px;
         height: auto; }
       /* line 34, ../scss/screen-01.scss */
       header.main-header .header-block.logo-area a.mobile-logo {
@@ -1149,7 +1152,8 @@ header.main-header {
         width: 52px; }
     /* line 41, ../scss/screen-01.scss */
     header.main-header .header-block.nav-area {
-      text-align: center; }
+
+	  width:55%;	  }
       /* line 43, ../scss/screen-01.scss */
       header.main-header .header-block.nav-area ul {
         display: inline-block; }
@@ -1172,6 +1176,10 @@ header.main-header {
           header.main-header .header-block.nav-area ul li.active a {
             border-bottom: 3px solid #2eb14b;
             color: #2eb14b; }
+
+	header.main-header .header-block.misc-area {
+		width:25%;
+	}
     /* line 69, ../scss/screen-01.scss */
     header.main-header .header-block.misc-area ul {
       margin-right: 15px;
@@ -2205,7 +2213,7 @@ main section.content {
                 background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffca30), color-stop(50%, #ffca30), color-stop(50%, #e5b52b), color-stop(100%, #e5b52b));
                 background-image: -moz-linear-gradient(left, #ffca30 0%, #ffca30 50%, #e5b52b 50%, #e5b52b 100%);
                 background-image: -webkit-linear-gradient(left, #ffca30 0%, #ffca30 50%, #e5b52b 50%, #e5b52b 100%);
-                background-image: linear-gradient(to right, #ffca30 0%, #ffca30 50%, #e5b52b 50%, #e5b52b 100%); 
+                background-image: linear-gradient(to right, #ffca30 0%, #ffca30 50%, #e5b52b 50%, #e5b52b 100%);
                 color: #000;}
           /* line 1097, ../scss/screen-01.scss */
           .list-content .list-item .list-item-content .chart-data-area table.chart-legend tr td.legend2 {
@@ -2943,7 +2951,7 @@ main section.content {
     top:55px;
     bottom:0;
     right:0;
-    left:0; 
+    left:0;
 }
 .grid .tick line {
     stroke: lightgrey;

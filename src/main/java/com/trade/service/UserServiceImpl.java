@@ -106,27 +106,39 @@ public class UserServiceImpl implements UserService {
   public User validateUser(Login login) {
     logger.debug("Entry into validateUser with usename "+login.getUsername());
     User user =  userDao.validateUser(login);
+    setRole(user);
 
-    if(user != null) {
-        UserRole userRole = userRoleDao.findUserRoleByUserId(user.getUserId());
-        user.setUserRole(userRole);
-    }
     return user;
+  }
+
+  private void setRole(User user){
+    if(user != null) {
+      UserRole userRole = userRoleDao.findUserRoleByUserId(user.getUserId());
+      user.setUserRole(userRole);
+    }
   }
 
   public User findUserByUsername(String username) {
     logger.debug("Entry into findUserByUsername with usename "+username);
-    return userDao.findUser(username);
+
+    User user =  userDao.findUser(username);
+    setRole(user);
+    return user;
   }
 
   public User findUserByUserId(String userId) {
     logger.debug("Entry into findUserByUsername with userId "+userId);
-    return userDao.findUserByUserId(userId);
+    User user =  userDao.findUserByUserId(userId);
+    setRole(user);
+    return user;
   }
 
   public User findUserByEmail(String email) {
     logger.debug("Entry into findUserByEmail with email "+email);
-    return userDao.findUserByEmail(email);
+
+    User user =  userDao.findUserByEmail(email);
+    setRole(user);
+    return user;
   }
 
   public User findUserByVerificationToken(String token) {

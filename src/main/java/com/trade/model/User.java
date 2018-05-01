@@ -31,6 +31,8 @@ public class User {
 
   private List<AdminPrivilege> adminPrivileges;
 
+  private Participant participant;
+
 
   public String getUserId() {
     return userId;
@@ -201,4 +203,11 @@ public class User {
     }
 
 
+  public Participant getParticipant() {
+    return participant;
+  }
+
+  public void setParticipant(Participant participant) {
+    this.participant = participant;
+  }
 }

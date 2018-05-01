@@ -1,0 +1,1296 @@
+/* DEVNAME - Janak
+ * Date - 21/02/2011
+ * Version - 1.1
+ * Module ID - live_market.css1.1 
+ * Reason for change - Add a class for input Form Example - registerTV.jsp
+ 					     
+ * */
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	/*vertical-align: baseline; date:10/04/2011 Sonal*/
+	vertical-align: middle;
+	background: transparent;
+}
+body
+{
+	behavior: url("/common/js/csshover.htc");
+	color:#000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 62.5%;
+	height: 100%;
+	line-height: 1;
+}
+
+ol, ul
+{
+	list-style-type: none;
+}
+:focus
+{
+	outline: 0;
+}
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a
+{
+	color: #666667;
+	outline: none;
+	text-decoration: none;
+}
+.clear
+{
+	clear:both;
+	font-size:1%;
+	height:0;
+}
+.clearfix:after
+{
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.clearfix
+{
+	display: inline-block;
+}
+html[xmlns] .clearfix
+{
+	display: block;
+}
+* html .clearfix
+{
+	height: 1%;
+}
+.main_content .live_market_content {
+	float: left;
+	width: 772px
+}
+.main_content .live_market_content h2
+{
+	color: #ef620d;
+	float: left;
+	font-size: 2em;
+	padding: 0 0 1px 0
+}
+.main_content .live_market_content .track
+{
+	float: right;
+	font-size: 1.1em;
+}
+.main_content .live_market_content .track p
+{
+	text-align: right;
+	width: 300px
+}
+.main_content .live_market_content .tabContent .track
+{
+	float: left;
+	font-size: 1.1em;
+	margin: 0 0 10px
+}
+.main_content .live_market_content .tabContent .track p
+{
+	text-align: left;
+	margin-top: 7px;
+	width: auto
+}
+.main_content .live_market_content .tabContent .track p.title
+{
+	font-size: 1.3em;
+	font-weight: bold
+}
+.main_content .live_market_content .tabContent ul.advances {
+	background-color: #E0E0E0;
+	float: right
+}
+.main_content .live_market_content .tabContent ul.advances li {
+	border-right: 1px solid #ACA99F;
+	float: left;
+	font-size: 1.2em;
+	font-weight: bold;
+	line-height: 20px;
+	padding: 3px 12px;
+	text-align: center
+}
+.main_content .live_market_content .tabContent ul.advances li.last {
+	border-right: none
+}
+.tabular_data_live_analysis {
+	clear: both;
+	float: left;
+	font-size: 1.1em;
+	width: 100%;
+}
+.tabular_data_live_analysis table {
+	border: 1px solid #ACA99F;
+	border-left: 0;
+	background-color: #E0E0E0;
+	float:left;
+	margin:0 !important;
+	width: 100%
+}
+.tabular_data_live_analysis table tr th {
+	background: none;
+	font-weight: bold;
+	color: #000;
+	border-left: 1px solid #ACA99F;
+	border-bottom: 1px solid #ACA99F;
+	/*padding: 15px 4px 10px 4px; CMR:52464*/
+	padding: 4px 4px 4px 4px;
+	/*width:90px;*//*Added by pradyumna 2375*/
+}
+.tabular_data_live_analysis table tr th.last {
+	width: 138px
+}
+.tabular_data_live_analysis table tr td {
+	background:none;
+	border-left: 1px solid #ACA99F;
+	/*padding: 7px 4px 5px 4px; Sonal*/
+	padding: 4px 4px 4px 4px;
+	text-align: left;
+	vertical-align: middle; /* property added */
+}
+.tabular_data_live_analysis table tr.alt td {
+	background-color: #FFFFFF /*!importantSonal for stock watch*/;
+}
+.tabular_data_live_analysis table tr.sel td {
+	border-top: solid 2px #787676;
+	border-bottom: solid 2px #787676;
+}
+.tabular_data_live_analysis table tr td.first {
+	border-left: solid 2px #787676 !important;
+}
+.tabular_data_live_analysis table tr.sel td.last {
+	border-right: solid 2px #787676;
+}
+.tabular_data_live_analysis table tr td.banktitle {
+	border-bottom: solid 1px #b2b2b2;
+	font-weight: bold;
+	padding: 12px 4px 10px
+}
+.tabular_data_live_analysis table td.status_map {
+	text-align: center
+}
+.tabular_data_live_analysis table tr a.symbol {
+	background: url(../images/arrow_symbol.gif) right 5px no-repeat;
+	color: #666667;
+	padding: 0 12px 0 0;
+}
+.tabular_data_live_analysis table tr a.symbolDesc {
+	background: url(../images/arrow_symbol_down.gif) right 5px no-repeat;
+	color: #666667;
+	padding: 0 12px 0 0;
+}
+.tabular_data_live_analysis table tr .number {
+	text-align: right
+}
+.tabular_data_live_analysis table tr th a.change
+{
+	/*background: url(../images/arrow_change.gif) no-repeat right 7px;*/
+	background: url(../images/sort_asc.gif) no-repeat right 7px;
+	padding: 0 13px 0 0;
+	color: #000000;
+	cursor: pointer
+}
+.main_content .live_market_content #tabs_main_content
+{
+	float: left;
+	margin-top: 5px;
+	/*margin-top: 11px; CMR : 52464*/
+	width: 772px
+}
+.main_content .live_market_content #tabs_main_content ul.tab
+{
+   /*	background: url(../images/bg_active_top.gif) bottom left repeat-x #fff; CMR : 52464  */
+    background: url(../images/bg_active_top.gif) bottom left repeat-x #fff;
+	border-left: 1px solid #d4d4d4;
+	float: left;
+	/* width: 774px; */
+	width: 900px;
+}
+.main_content .live_market_content #tabs_main_content ul.tab li
+{
+	float: left;
+}
+.main_content .live_market_content #tabs_main_content ul.tab li a.sel
+{
+	background: #ffffff; 
+	color: #000000;/*CMR : 52464 */
+}
+.main_content .live_market_content #tabs_main_content ul.tab li.last
+{
+	margin-right: 0 !important;
+}
+.main_content .live_market_content #tabs_main_content ul.tab li a {
+ /*	background: #FFFFFF  url(../images/bg_active_tabs.gif) repeat-x left top; CMR : 52464 */
+	background: #e8e7e3;
+	border-bottom: none !important;
+	border-top: 1px solid #d4d4d4;
+	border-right: 1px solid #d4d4d4;
+/*	color: #000000; CMR : 52464 */
+/*	color: #969696;*/
+	color:#424240;
+	float: left;
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 7px 22px;
+	text-align: center;
+}
+.main_content .live_market_content #tabs_main_content .tabContent
+{
+	border: 1px solid #d4d4d4;
+	border-top: none;
+	float: left;
+	padding: 8px 12px 5px;
+	/*padding: 15px 12px 5px; CMR:52464*/
+	/* width: 960px ; */
+	width: 875px ;
+
+	
+}
+
+.main_content .live_market_content #tabs_main_content .tabContent h4 {
+	border-bottom: 1px solid #b2b2b2;
+	color: #2d2d2d;
+	font-size: 1.1em;
+	padding: 0 0 5px 0;
+}
+.main_content .live_market_content #tabs_main_content .tabContent ul.rupees_box
+{
+	border: 1px solid #e6e6e6;
+	border-bottom: none;
+	float: right;
+	margin: -5px 0 0;
+	padding-bottom: 6px
+}
+.main_content .live_market_content #tabs_main_content .tabContent ul.rupees_box li
+{
+	border-right: 1px solid #000000;
+	float: left;
+	font-size: 1.1em;
+	margin: 6px 0 0 0;
+	padding: 0 6px
+}
+.main_content .live_market_content #tabs_main_content .tabContent ul.rupees_box li.last
+{
+	border-right: none
+}
+.main_content .live_market_content #tabs_main_content .tabContent ul.rupees_box li a.sel
+{
+	color: #000000;
+	cursor: default
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active {
+	background-color: #D9D9D9;
+	behavior: url(border-radius.htc); 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px; 
+	border-radius: 2px;  
+	border: 1px solid #ACA99F;
+	float: left;
+	margin: 0 0 13px 0;
+	padding: 8px 0 9px 10px;
+	width: 736px;
+}
+
+.main_content .live_market_content #tabs_main_content .tabContent .view_active_preopen {
+	background-color: #D9D9D9;
+	behavior: url(border-radius.htc); 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px; 
+	border-radius: 2px;  
+	border: 1px solid #ACA99F;
+	float: left;
+	margin: 0 0 13px 0;
+	padding: 4px 0 2px 7px;
+	width: 736px;
+}
+
+
+.main_content .live_market_content #tabs_main_content .tabContent .view_active p {
+	color: #313131;
+	font-size: 1.1em;
+	font-weight: bold;
+	float: left;
+	padding: 0 7px 0 0;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active p.topspace {
+	padding: 5px 7px 0 0;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active select {
+	float: left;
+	margin: 0 0 0 7px;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active input {
+	margin: 0 0 0 13px;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active ul {
+	float: left
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active ul li {
+	border-right: 1px solid #000000;
+	float: left;
+	font-size: 1.1em;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active ul li.last {
+	border-right: none
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active ul li a {
+	margin: 0 5px
+}
+.main_content .live_market_content #tabs_main_content .tabContent .view_active ul li a.sel {
+	color: #000000;
+	cursor: default;
+	font-weight: bold;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note
+{
+	float: left;
+	margin: 12px 0 0 12px;
+	width: 560px
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note p.title
+{
+	border-bottom: 1px solid #cccccc;
+	color: #454444;
+	float: left;
+	font-size: 1.3em;
+	font-weight: bold;
+	padding: 3px 0;
+	width: 100% 
+	
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note ul
+{
+	float: left;
+	padding: 5px 0
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note ul li
+{
+	background: url(../images/icon_tick.gif) left 5px no-repeat;
+	clear: both;
+	float: left;
+	font-size: 1.1em;
+	padding: 2px 0 2px 16px;
+	width: 534px
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note ul li ul.noteul_child
+{
+	float: left;
+	padding: 2px 0
+}
+.main_content .live_market_content #tabs_main_content .tabContent .note ul li ul.noteul_child li
+{
+	background: none;
+	clear: both;
+	float: left;
+	font-size: 1.1em;
+	padding: 2px 0 2px 12px;
+	width: 520px
+}
+
+/* Most Active Contracts CSS Start */
+
+#most_active_container {
+	float: left;
+	margin: 0;
+	position: relative;
+	width: 775px;
+}
+
+#most_active_container p {
+	float: right;
+	padding: 0 18px 0 0;
+}
+
+#most_active_container p span {
+	font-size: 1.1em;
+}
+
+#most_active_container p img {
+	padding: 0 0 0 8px;
+}
+
+#most_active_container .view_active {
+	background-color: #E0E0E0;
+	behavior: url(../../../../border-radius.htc); 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px; 
+	border-radius: 2px;  
+	border: 1px solid #ACA99F;
+	float: left;
+	margin: 13px 0 0 0;
+	padding: 5px 0 6px 21px;
+	width: 752px;
+}
+
+#most_active_container .view_active p {
+	color: #313131;
+	font-size: 1.1em;
+	font-weight: bold;
+	float: left;
+	padding: 8px 0 7px 0;
+}
+
+#most_active_container .view_active select {
+	float: left;
+	margin: 4px 0 0 13px;
+}
+
+#most_active_container .view_active input {
+	margin: 4px 0 0 13px;
+}
+
+#most_active_container #tabs_most_active {
+	float: left;
+	padding-bottom: 8px;
+	margin: 11px 0 0 0;
+	width: 774px;
+}
+
+#most_active_container #tabs_most_active ul.tab
+{
+	background: url(../images/bg_active_top.gif) bottom left repeat-x #fff;
+	float: left;
+	width: 950px;
+}
+#most_active_container #tabs_most_active ul.tab li
+{
+	float: left;
+}
+#most_active_container #tabs_most_active ul.tab li a.sel
+{
+	background: #ffffff;
+	border: 1px solid #d4d4d4;
+	color: #000000;/*CMR : 52464 */
+}
+#most_active_container #tabs_most_active ul.tab li.last
+{
+	margin-right: 0 !important;
+}
+#most_active_container #tabs_most_active ul.tab li a {
+ /*	background: #FFFFFF url(../images/bg_active_tabs.gif) repeat-x left top; CMR : 52464 */
+	background: #e8e7e3;
+	border-bottom: none !important;
+	border-top: 1px solid #d4d4d4;
+	border-right: 1px solid #d4d4d4;
+	border-left: 1px solid #d4d4d4;
+/*  color:#000000; CMR : 52464 */
+	color: #969696;
+	float:left;
+	font-size:1.1em;
+	font-weight:bold;
+	padding:7px 14px;
+	text-align:center;
+}
+
+#most_active_container #tabs_most_active .tabContent {
+	border: 1px solid #d4d4d4;
+	border-top: none;
+	float: left;
+	padding: 10px 12px;
+	width: 746px;
+}
+
+#most_active_container #tabs_most_active .tabContent table
+{
+	border: 1px solid #ACA99F;
+	border-left: 0;
+	background-color: #E0E0E0;
+	float:left;
+	font-size: 1.1em;
+	margin:0 !important;
+	width: 100%
+}
+#most_active_container #tabs_most_active .tabContent table tr th
+{
+	background:none;
+	font-weight: bold;
+	color: #000;
+	border-left: 1px solid #ACA99F;
+	border-bottom: 1px solid #ACA99F;
+	padding: 4px 4px 4px 4px;
+	/*padding: 15px 4px 10px 4px; CMR:52464*/
+}
+#most_active_container #tabs_most_active .tabContent table tr th.date
+{
+	width:35px;
+}
+#most_active_container #tabs_most_active .tabContent table tr th a.date
+{
+	background: url(../images/date-arrow.gif) no-repeat right 4px;
+	padding: 0 13px 0 0;
+	color: #666667;
+}
+#most_active_container #tabs_most_active .tabContent table tr td
+{
+	background:none;
+	border-left: 1px solid #ACA99F;
+	padding: 7px 4px 5px 4px;
+	text-align: left;
+}
+
+#most_active_container #tabs_most_active .tabContent table tr td.number {
+	text-align: right;
+}
+
+#most_active_container #tabs_most_active .tabContent table tr td.quote {
+	color: #424240;
+}
+#most_active_container #tabs_most_active .tabContent table tr.alt td
+{
+	background-color: #FFFFFF !important;
+}
+#most_active_container #tabs_most_active .tabContent table tr.alt td.high-sel, #most_active_container #tabs_most_active .tabContent table tr td.high-sel
+{
+	background-color: #edcdcb !important;
+	border: 1px solid #c00000;
+}
+#most_active_container #tabs_most_active .tabContent table tr.alt td.low-sel, #most_active_container #tabs_most_active .tabContent table tr td.low-sel
+{
+	background-color: #e8fff2 !important;
+	border: 1px solid #00b050;
+}
+#most_active_container #tabs_most_active .tabContent table tr .total-figure
+{
+	font-weight: bold;
+	text-align: left;
+	border-top: 1px solid #c3c0b6;
+}
+#most_active_container #tabs_most_active .tabContent table tr .border-none
+{
+	border-left: none;
+	border-top: 1px solid #c3c0b6;
+}
+
+#most_active_container #tabs_most_active .tabContent .notes {
+	width: 536px;
+	float: left;
+	padding: 17px 0 0 0;
+}
+
+#most_active_container #tabs_most_active .tabContent p {
+	float: left;
+	font-size: 1.1em;
+}
+
+#most_active_container #tabs_most_active .tabContent .notes h3 {
+	border-bottom: 1px solid #cccccc;
+	color: #454444;
+	font-size: 1.3em;
+	margin-bottom: 8px;
+	padding: 0 0 7px 0;
+}
+
+#most_active_container #tabs_most_active .tabContent .notes ul li {
+	background: url(../images/arrow_left.gif) no-repeat 3px 2px;
+	font-size: 1.1em;
+	padding: 0 0 8px 15px;
+}
+
+/* Most Active Contracts CSS End */
+
+/* Pre Open Market CSS Start */
+
+.main_content .live_market_content ul.stock {
+	background-color:#E0E0E0;
+	float:left;
+	margin:7px 0 7px;
+	width:422px;
+}
+
+.main_content .live_market_content ul.stock li.active {
+	color:#408602;
+}
+
+.main_content .live_market_content ul.stock li {
+	border-right:1px solid #ACA99F;
+	float:left;
+	font-size:1.2em;
+	height:60px;
+	line-height:21px;
+	text-align: center;
+	padding:7px 15px 4px;
+}
+
+.main_content .live_market_content ul.stock li.active span {
+	color:#000000;
+	font-size:1.5em;
+	font-weight:normal;
+}
+
+.main_content .live_market_content ul.stock li.active span.downtext {
+	font-size: 1em;
+	color: #000;
+}
+
+.main_content .live_market_content ul.stock li span {
+	font-weight:bold;
+}
+
+.main_content .live_market_content ul.stock li.active span.sel {
+	background:url(../images/arrow_ticker_up.gif) no-repeat left 5px;
+	color:#408602;
+	font-size:inherit;
+	padding:0 10px 0 16px;
+}
+/*added for preopen- sonal-17Mar2011 - Start*/
+.main_content .live_market_content ul.stock li.active span.seldown {
+    background: url("../images/arrow_ticker_down.gif") no-repeat scroll left 5px transparent;
+    color: red;
+    font-size: inherit;
+    padding: 0 10px 0 16px;
+}
+/*added for preopen- sonal-17Mar2011 - End*/
+.main_content .live_market_content ul.stock li.last {
+	border-right:none;
+}
+
+.pre-open-order {
+	float: left;
+	padding: 17px 0 0 0;
+	/*rahulp-24Mar2011- preopen tame chart- start*/
+	/*width: 480px;*/
+	width: 460px;
+	/*rahulp-24Mar2011- preopen tame chart- end*/
+}
+
+.pre-open-order p.topalign {
+	padding-top: 2px;
+}
+
+.pre-open-order p {
+	font-size: 1.1em;
+	float: left;
+	/*rahulp-24Mar2011- preopen tame chart- start*/
+	/*padding: 0 75px 13px 0;*/
+	padding: 0 7px 13px 0;
+	/*rahulp-24Mar2011- preopen tame chart- end*/
+}
+
+.pre-open-order p input {
+	padding-left: 5px;
+}
+
+.open-graph {
+	float: left;
+	width: 212px;
+	margin: -18px 14px 0 0;
+}
+
+.open-graph h3 {
+	padding-bottom: 8px;
+	float: left;
+	font-size: 1.1em;
+}
+
+.open-graph a.learnmore {
+	background:url(../images/arrow_dropmenu_li.gif) no-repeat left 7px;
+	float: left;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 5px 0 0 0;
+	padding: 5px 0 0 12px;
+}
+
+
+/* Pre Open Market CSS End */
+
+/* Currenvy Derivatives Stock Watch CSS Start*/
+.rbi_ref_rate {
+	/*float: right;
+	margin: -21px 0 0 */
+}
+.rbi_ref_rate ul.header {
+	-moz-border-radius: 2px 2px 2px 2px;
+	height: 12px;
+    background-color: #E0E0E0;
+    border: 1px solid #ACA99F;
+	padding: 7px 10px;
+	width:790px;
+}
+.rbi_ref_rate ul.header li {
+	display: inline;
+	font-size: 1.1em;
+	font-weight: bold
+}
+.rbi_ref_rate ul.header li.first {
+	padding: 0 211px 0 10px; /*0 21px 0 0 */
+}
+.rbi_ref_rate .rbi_content {
+	float: left;
+	padding: 7px;
+	width: 100%; /*for rbi 13 Jun 2011*/
+}
+.rbi_ref_rate .rbi_content ul {
+	float: left;
+	width: 130px;
+}
+/* Changed By SwapNil */
+.rbi_ref_rate .rbi_content table tr td {
+	/*float: left;*/
+	padding: 3px 0 10px 40px;	
+	font-size: 1.3em;/*for rbi 13 Jun 2011*/
+    font-weight: bold;
+}
+.rbi_ref_rate .rbi_content ul.right {
+	border-left: 1px solid #cccccc;
+	float: left;
+	padding-left: 15px
+}
+
+.rbi_ref_rate .rbi_content table tr td.flag_us {
+	background: url(../images/flag_us.gif) left top no-repeat
+}
+.rbi_ref_rate .rbi_content table tr td.flag_uk {
+	background: url(../images/flag_uk.gif) left top no-repeat
+}
+.rbi_ref_rate .rbi_content table tr td.flag_euro {
+	background: url(../images/flag_euro.gif) left top no-repeat
+}
+.rbi_ref_rate .rbi_content table tr td.flag_japan {
+	background: url(../images/flag_japan.gif) left top no-repeat
+}
+.main_content .live_market_content .track_lft
+{
+	float: left;
+	font-size: 1.1em;
+	margin: 8px 0 0;
+	width: 100%; /*Added By Swap */
+}
+.main_content .live_market_content .track_lft p
+{
+	float: left
+}
+.tabular_data_live_watch {
+	clear: both;
+	float: left;
+	font-size: 1.1em;
+	width: 100%;
+}
+.tabular_data_live_watch table {
+	border: 1px solid #ACA99F;
+	border-width: 1px 1px 1px 0;
+	background-color: #E0E0E0;
+	float:left;
+	margin:0 !important;
+	width: 100%
+}
+
+.tabular_data_live_watch table tr td {
+	background:none;
+	text-align: left;
+}
+.tabular_data_live_watch table tr td table {
+	border: 0;
+	background-color: #E0E0E0;
+	float:left;
+	margin:0 !important;
+	width: 100%
+}
+.tabular_data_live_watch table tr td table tr td {
+	background:none;
+	border-left: 1px solid #ACA99F;
+	/*padding: 7px 4px 5px 4px; CMR:42464*/
+	padding: 4px 4px 4px 4px;
+	text-align: left;
+}
+.tabular_data_live_watch table tr td table tr th {
+	background: none;
+	font-weight: bold;
+	color: #000;
+	border-left: 1px solid #ACA99F;
+	/*padding: 15px 4px 10px 4px;CMR:42464*/
+	padding: 4px 4px 4px 4px;
+	text-align: center
+}
+.tabular_data_live_watch table tr.alt td {
+	background-color: #FFFFFF !important;
+}
+.tabular_data_live_watch table tr .selected {
+	background-color: #EEEEEE;
+	border-color: #ACAAA3 #ACAAA3 #ACAAA3 #E3DFD3;
+	font-size: 1.1em;
+	border-style: solid;
+    border-width: 1px 0 1px 1px;
+	font-weight: bold;
+	padding: 3px 4px 3px /*Swapnil */
+}
+
+.tabular_data_live_watch table tr .number {
+	text-align: right
+}
+.tabular_data_live_watch table tr td .accordian_top {
+	float: left;
+	width: 100%
+}
+.tabular_data_live_watch table tr td .accordian_top .accordian_content {
+	display: none;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%
+}
+.tabular_data_live_watch table tr td .accordian_top h3 {
+	background-color: #FFFFFF;
+	border-top: 1px solid #ACA99F;
+	border-left: 1px solid #ACA99F;
+	border-right: 1px solid #ACA99F;
+	float: left;
+	font-size: 1.1em;
+	font-weight: normal;
+	padding: 5px 0 5px 0;
+	width: 99.9%
+}
+.tabular_data_live_watch table tr td .accordian_top h3 span {
+	background: url(../images/arrow_more_down.gif) right 6px no-repeat;
+	color: #424240;
+	cursor: pointer;
+	padding: 0 15px 0 7px
+}
+.tabular_data_live_watch table tr td .accordian_top h3 span.active {
+	background: url(../images/arrow_more_up.gif) right 6px no-repeat;
+}
+.accordian_stock {
+	float: left;
+	margin: 20px 0 0;
+	width: 774px
+}
+.accordian_stock h3 {
+	background-color: #EEEEEE;
+	border: 1px solid #D7D6D7;
+	cursor: pointer;
+	float:left;
+	font-size: 1.1em;
+	padding: 0 9px;
+	width: 754px;
+}
+
+.accordian_stock h3 span {
+    background: url(/common/images/ico_minus.gif) no-repeat 0 6px transparent;
+	cursor: pointer;
+	float:left;
+	padding: 6px 0 7px 20px;
+}
+.accordian_stock h3.active span {
+ background: url(/common/images/ico_plus.gif) no-repeat 0 6px transparent;
+}
+
+.accordian_stock .accordian_content {
+	border: 1px solid #d4d4d4;
+	border-top: none;
+	display: none;
+	float: left;
+	margin: 0 !important;
+	padding: 12px 7px;
+	width: 758px
+}
+.accordian_stock .accordian_content .left_content {
+	float: left;
+	margin: 0 20px 0 0;
+	width: 410px
+}
+.accordian_stock .accordian_content .left_content p {
+	font-size: 1.1em;
+	padding: 0 0 3px
+}
+.accordian_stock .accordian_content .left_content p.title {
+	font-weight: bold
+}
+.accordian_stock .accordian_content .right_content p {
+	font-size: 1.1em;
+	padding: 0 0 3px
+}
+.accordian_stock .accordian_content .right_content p.title {
+	font-weight: bold
+}
+.accordian_stock .accordian_content table {
+	border: 1px solid #ACA99F;
+	border-right: none;
+	font-size: 1.1em;
+	margin: 7px 0 12px;
+}
+.accordian_stock .accordian_content table tr th {
+	background-color: #E0E0E0;
+    border-right: 1px solid #ACA99F;
+	border-bottom: 1px solid #ACA99F;
+    font-weight: bold;
+    /*padding: 15px 4px 10px; CMR:52464*/
+	padding: 4px 4px 4px 4px;
+    text-align: center;
+}
+.accordian_stock .accordian_content table tr td {
+	background-color: #E0E0E0;
+	border-right: 1px solid #ACA99F;
+	padding: 7px 4px 5px;
+}
+.accordian_stock .accordian_content table tr td.number {
+	text-align: right
+}
+.accordian_stock .accordian_content table tr.alt td {
+	background-color: #fff;
+}
+.accordian_stock .accordian_content table tr.total td {
+	font-weight: bold;
+}
+.accordian_stock .accordian_content table tr.total td.total {
+	text-align: center
+}
+.accordian_stock .accordian_content .right_content {
+	float: left;
+	width: 328px
+}
+/* Currenvy Derivatives Stock Watch CSS Start*/
+/* Live Stock Watch CSS Start*/
+.main_content .live_market_content .content_box {
+	border: 1px solid #d4d4d4;
+	float: left;
+	margin: 12px 0 5px;
+	padding: 12px;
+	width: 746px
+}
+/* Live Stock Watch CSS End*/
+/*NSE option chain page css start here Added on 270110*/
+.FL{float:left}.FR{float:Right}.CL{clear:both} .CL1{clear:both; font-size:0; line-height:0; height:0}.CTR{ text-align:center;}
+.contractsbox{ border:solid 1px #dad8d6; background:#fbf8f1; float:left; padding:10px; width:550px; margin: 15px 0 0 0px }
+.contractsbox p, .tphead p{ padding-top:15px; font-size: 1.1em; font-weight:bold; color:#000}
+.contractsbox h4{font-size: 1.1em; font-weight:bold}
+.contractsbox a{font-size: 1.1em; font-weight:bold; color:#424240}
+
+.contractsbox input{ margin-right:15px;}
+.tphead{padding: 0 0 5px;}
+.tphead h2{color: #424240; font-size:2em; float: none !important}
+.tphead p{ padding:10px 0px; font-weight:normal; font-size: 1.1em; }
+.boxsrch{ padding-top:10px;}
+.lnk{  zoom:1;  padding:1px; font-size:11px; font-weight:normal!important}
+
+.PT3{ padding-top:3px;}
+.txtinp{ border:solid 1px #bdb8a5; padding:2px; color:#313131; background:#fff; width:120px;font:11px; color:#000; font-size:1.1em}
+.lst05{ float:left; padding:10px 0px 0px 10px; }
+.lst05 ul { float: left}
+.lst05 ul li{ padding: 0 0 10px}
+.lst05 ul li a{  background:url(../images/arrow_left.gif) 0px 3px no-repeat !important; padding:0 0 0 12px; font-weight:bold !important; color:#424240 !important; font-size: 1.1em}
+/*NSE option chain page css End here Added on 270110*/
+
+
+/*NSE option chain open window page css Start here Added on 280110*/
+.main_box{border:solid 1px #d4d4d4; padding:15px; margin:0 0 20px 0;}
+.tphead{color: #EF620D; padding: 0 0 5px; }
+.srchpnl{background:#C2C2C2;padding:7px 0px 7px 20px; *padding:5px 0px 0px 20px;}
+.srchpnl span{display:block;}
+.srchpnl p{ padding-bottom:1px;}
+.srchpnl b{ padding-top:5px;padding-bottom:2px;}
+.srchpnl div{padding-top:2px;}
+.srchpnl span,.srchpnl b,.srchpnl div{float:left; margin-right:14px;padding-bottom:2px;}
+.srchpnl a{padding-top:2px; float:left; display:block; line-height:15px;}
+.indexpnl{margin:20px 0 15px 0;font-size:1.1em; font-weight:bold }
+.indexpnl span{padding:0px 8px 0px 25px; font-weight:normal !important}
+.srchpnl,.srchpnl2{margin:20px 0 0 0; font-size:1.1em}
+.srchpnl2{background:#f5e5bb; padding:4px 0px 4px 20px; *padding:4px 0px 0px 20px;}
+.srchpnl2 span{float:left; margin-right:15px}
+.tbldata table{border-collapse:collapse; border-left:solid 1px #c6c2ba; border-top:solid 1px #c6c2ba;  font-size:0.8em}
+.tbldata table th{background:#E0E0E0; text-align:center; padding:8px 3px; vertical-align:middle; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.tbldata table td{text-align:center; padding:6px 3px; vertical-align:top; border-bottom:solid 1px #ACA99F; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.tbldata table td.ylwbg{background:#fbf5cd}
+.tbldata table td.grybg{background:#e7e3d5}
+.hghbox{ margin:15px 0; vertical-align:middle; text-align:right; font-size:0.6em; height:20px}
+.hghbox span{ float:right; margin-left:10px}
+.hghbox p{ float:right; margin-left:10px; line-height: 14px}
+/*NSE option chain open window page css End here Added on 280110*/
+
+/*Start CSS -for CdOrderBook on 14-06-11*/
+.cdtbldata table{border-collapse:collapse; border-left:solid 1px #c6c2ba; border-top:solid 1px #c6c2ba;  font-size:0.7em}
+.cdtbldata table{border-collapse:collapse; border-left:solid 1px #c6c2ba; border-top:solid 1px #c6c2ba;  font-size:0.7em}
+.cdtbldata table th{background:#E0E0E0; padding:5px 3px; vertical-align:middle; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.cdtbldata table td{padding:3px 3px; vertical-align:top; border-bottom:solid 1px #ACA99F; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+
+/*End CSS  */
+/*
+*  pre_open_sparkline1.1 start
+*/
+.tabular_data_pre_open {
+	clear: both;
+	float: left;
+	font-size: 1.1em;
+	width: 100%;
+}
+
+.tabular_data_pre_open table {
+	border: 1px solid #ACA99F;
+	background-color: #E0E0E0;
+	float:left;
+	margin:0 !important;
+	width: 100%
+}
+.tabular_data_pre_open table tr th {
+	background: none;
+	font-weight: bold;
+	color: #000;
+	border-left: 1px solid #ACA99F;
+	border-top: 1px solid #ACA99F;
+	border-bottom: 1px solid #ACA99F;	
+	padding: 4px 2px;
+	/*padding: 15px 4px 10px 4px; cmr:52464*/
+}
+.tabular_data_pre_open table tr td {
+	background:none;
+	border-left: 1px solid #ACA99F;
+	/*padding: 7px 4px 5px 4px; date 10/04/2011 Sonal*/
+	padding: 1px 4px 1px 4px;
+	text-align: right;
+}
+.tabular_data_pre_open table tr.alt td {
+	background-color: #FFFFFF !important;
+}
+/*
+*  pre_open_sparkline1.1 end
+*/
+
+/*
+*  live_market.css1.1 Start
+  *padding:4px 0px 0px 20px;
+*/
+.frmtbldata table{border-collapse:collapse; border-left:solid 1px #c6c2ba; border-top:solid 1px #c6c2ba;  font-size:0.8em}
+.frmtbldata table th{background:#E0E0E0; text-align:left; padding:10px; vertical-align:middle; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.frmtbldata table th.centr{background:#E0E0E0; text-align:center; padding:8px 3px; vertical-align:middle; border-right:solid 1px #c6c2ba; border-bottom:solid 1px #ACA99F;}
+.frmtbldata table td{text-align:left; padding:10px; vertical-align:top; border-bottom:solid 1px #ACA99F; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.frmtbldata table td.centr{text-align:center; padding:6px 3px; vertical-align:top; border-bottom:solid 1px #ACA99F; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.frmtbldata table td.ylwbg{background:#fbf5cd}
+.frmtbldata table td.grybg{background:#e7e3d5}
+
+
+
+.srchpnl22{background:#f5e5bb; padding:4px 0px 4px 0px; *padding:4px 0px 4px 0px;}
+.srchpnl22 span{float:left; margin-right:15px}
+
+
+
+.opttbldata table{border-collapse:collapse; border-left:solid 1px #c6c2ba; border-top:solid 1px #c6c2ba;  font-size:1.1em}
+.opttbldata table th{background:#E0E0E0; text-align:center; padding:4px 3px; vertical-align:middle; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.opttbldata table td{text-align:center; padding:2px 2px; vertical-align:top; border-bottom:solid 1px #ACA99F; border-right:solid 1px #ACA99F; border-bottom:solid 1px #ACA99F;}
+.opttbldata table td.ylwbg{background:#fbf5cd;text-align:right;}
+.opttbldata table td.nobg{text-align:right}
+.opttbldata table td.cenbg{background:#e7e3d5;text-align:right;}
+.opttbldata table td.grybg{background:#e7e3d5}
+
+/*
+*  live_market.css1.1 End   - 
+*/
+
+/*
+*  pre-OpenOrderBook.jsp1.1 Start
+*/
+
+.smallFont{FONT:normal 8pt Calibri;COLOR:#000;TEXT-DECORATION:none;}
+.textFont{FONT:normal 10pt Calibri;COLOR:#000;TEXT-DECORATION:none;}
+.textFont1{FONT:normal 18px Calibri;COLOR:#000;TEXT-DECORATION:none;}
+
+.textFontR{FONT:normal 10pt Calibri;COLOR:#000;TEXT-ALIGN:RIGHT;TEXT-DECORATION:none;}
+.textFontC{FONT:normal 10pt Calibri;COLOR:#000;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;}
+.textFontCBold{FONT:normal 10pt Calibri;COLOR:#000;font-weight:bold;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;}
+.textFontLBold{FONT:normal 10pt Calibri;COLOR:#000;font-weight:bold;TEXT-ALIGN:LEFT;TEXT-DECORATION:none;}
+
+.orderBookFont{FONT:normal 10pt Calibri;COLOR:#000;TEXT-DECORATION:none;}
+.orderBookFontR{FONT:normal 10pt Calibri;text-align:center; padding:6px 3px; vertical-align:top; border-bottom:solid 1px #e8e8e8; border-right:solid 1px #c6c2ba; border-left:solid 1px #c6c2ba; border-bottom:solid 1px #c6c2ba;}
+.orderBookFontC{FONT:normal 10pt Calibri;COLOR:#000;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;}
+.orderBookFontCBold{FONT:normal 10pt Calibri;COLOR:#000;background-color:#E0E0E0;font-weight:bold;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;padding:6px 3px; vertical-align:top; border-bottom:solid 1px #e8e8e8; border-right:solid 1px #c6c2ba; border-bottom:solid 1px #c6c2ba;}
+.orderBookFontCBig{FONT:normal 14pt Calibri;COLOR:#FFFFFF;background-color:#226B05;font-weight:bold;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;}
+.orderBookHeaderBlue{FONT:normal 10pt Calibri;COLOR:#000;background-color:#9DBED3;font-weight:bold;TEXT-ALIGN:CENTER;TEXT-DECORATION:none;}
+.orderBookHeaderBrown{FONT:bold 10pt Calibri;background :#E0E0E0;text-align:center; font-wight: bold; padding:8px 3px; vertical-align:middle; border-right:solid 1px #c6c2ba; border-left:solid 1px #c6c2ba; border-bottom:solid 1px #c6c2ba;border-top:solid 1px #c6c2ba;}
+
+/*
+*  pre-OpenOrderBook.jsp1.1 End
+*/
+
+/*
+* Currency derivative stockwatch css Start
+*/
+
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active {
+	background-color: #dac694;
+	behavior: url(border-radius.htc); 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px; 
+	border-radius: 2px;  
+	border: 1px solid #dac694;
+	float: left;
+	margin: 0 0 13px 0;
+	padding: 8px 0 9px 10px;
+	width: 736px;
+}
+
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active ul {
+	float: left
+}
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active ul li {
+	border-right: 1px solid #000000;
+	float: left;
+	font-size: 1.1em;
+}
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active ul li.last {
+	border-right: none
+}
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active ul li a {
+	margin: 0 5px
+}
+.main_content .live_market_content #tabs_main_content .tabContent .trade_active ul li a.sel {
+	color: #000000;
+	cursor: default;
+}
+
+
+/*
+* Currency derivative stockwatch css End
+*/
+
+
+
+/*
+ *  circular.htm1.1 start 
+*/
+
+.main_content .live_market_content .view_active {
+	background-color: #E0E0E0;
+	behavior: url(border-radius.htc); 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px; 
+	border-radius: 2px;  
+	border: 1px solid #ACA99F;
+	float: left;
+	margin: 0 0 13px 0;
+	padding: 8px 0 9px 10px;
+	width: 736px;
+}
+
+.main_content .live_market_content .view_active p.topspace {
+	padding: 5px 7px 0 0;
+}
+.main_content .live_market_content .view_active select {
+	float: left;
+	margin: 0 0 0 7px;
+}
+.main_content .live_market_content .view_active input {
+	margin: 0 0 0 13px;
+}
+.main_content .live_market_content .view_active ul {
+	float: left
+}
+.main_content .live_market_content .view_active ul li {
+	border-right: 1px solid #000000;
+	float: left;
+	font-size: 1.1em;
+}
+.main_content .live_market_content .view_active ul li.last {
+	border-right: none
+}
+.main_content .live_market_content .view_active ul li a {
+	margin: 0 5px
+	font-size: 1.1em;
+}
+.main_content .live_market_content .view_active p {
+	color: #313131;
+	font-size: 1.1em;
+	font-weight: bold;
+	float: left;
+	padding: 5px 5px 0 0;//Changed From padding: 0 7px 0 0;
+}
+.main_content .live_market_content h2
+{
+	color: #424240;
+	float: left;
+	font-size: 1.7em;
+	padding: 0 0 1px 0
+}
+
+/*
+* circular.htm 1.1 end       
+*/
+
+
+/*Swapnil, Changed The Shape Of Drop Down*/
+
+.goodTextBox{
+    background: url("../images/textbox-bg-grd.gif") repeat-x scroll 0 0 #FFFFFF;
+    border: 1px solid #D7D6D7;
+    font-size: 11px;
+    padding: 3px 3px 2px;
+    width: 57px;
+}
+.tabular_data_live_watch table tr td .accordian_top_spread {
+	float: left;
+	width: 100%
+}
+.tabular_data_live_watch table tr td .accordian_top_spread .accordian_content_spread {
+	display: none;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%
+}
+.tabular_data_live_watch table tr td .accordian_top_spread h3 {
+	background-color: #FFFFFF;
+	border-top: 1px solid #ACA99F;
+	border-left: 1px solid #ACA99F;
+	border-right: 1px solid #ACA99F;
+	float: left;
+	font-size: 1.1em;
+	font-weight: normal;
+	padding: 5px 0 5px 0;
+	width: 99.9%
+}
+.tabular_data_live_watch table tr td .accordian_top_spread h3 span {
+	background: url(../images/arrow_more_down.gif) right 6px no-repeat;
+	color: #424240;
+	cursor: pointer;
+	padding: 0 15px 0 7px
+}
+.tabular_data_live_watch table tr td .accordian_top_spread h3 span.active {
+	background: url(../images/arrow_more_up.gif) right 6px no-repeat;
+}
+/* ends here Sonal for CD Spread 26-Sep-2011*/
+
+/* Start - Suhas:30-Nov-2011- for most active underlying data paging css*/
+.spanPage {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 0px solid #FFFFFF;
+    color: #52728D;
+    float: right;
+	width:20px
+    margin: 2px;
+    padding:10px 10px;
+}
+
+.spanPage a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C0BEAF;
+	width:60px
+    margin-right: 2px;
+    padding: 5px 5px;
+}
+
+.spanPage a.current {
+    background: none repeat scroll 0 0 #C0BEAF;
+    border: 1px solid #C0BEAF;
+	width:60px;
+    margin-right: 2px;
+    padding: 5px 5px 6px 5px;
+    font-weight: bold;
+}
+/* End - Suhas:30-Nov-2011- for most active underlying data paging css*/

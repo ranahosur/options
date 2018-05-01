@@ -56,7 +56,8 @@
                 <ul class="group">
                     <li class="active" ><a ng-href="/welcomeSAdmin"  href="#" onClick="getPage2('welcomeSAdmin');">Subscription View</a></li>
                     <li ><a ng-href="/logout"  href="#" onClick="getPage2('addSubscription');">New Subscription</a></li>
-                    <li><a href="http://www.twtradr.com/history">Manage Market</a></li>
+                    <li><a href="#" onClick="getPage2('inputFileMarket');">Upload Market Data</a></li>
+                    <li><a href="#" onClick="getPage2('manageMarket');">Manage Market</a></li>
                     <li><a href="http://www.twtradr.com/#">Manage News</a></li>
                 </ul>
             </div>
