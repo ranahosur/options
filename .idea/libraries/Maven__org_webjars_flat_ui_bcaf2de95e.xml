@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.webjars:flat-ui:bcaf2de95e">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/flat-ui/bcaf2de95e/flat-ui-bcaf2de95e.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/flat-ui/bcaf2de95e/flat-ui-bcaf2de95e-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/flat-ui/bcaf2de95e/flat-ui-bcaf2de95e-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

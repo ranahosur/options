@@ -10,5 +10,8 @@ public interface ParticipantService {
 
     Participant findParticipantTransactions(String userId);
 
-    public void saveParticipantTransactions(String username, MarketDataView marketDataView);
+    void saveParticipantTransactions(String username, MarketDataView marketDataView);
+
+    ParticipantTransaction findParticipantTransactionById(String participantTransactionId);
+
 }

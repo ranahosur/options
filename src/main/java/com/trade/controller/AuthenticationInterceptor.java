@@ -40,8 +40,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         if( !requestPath.contains("loginnew") && !requestPath.equals("/")
                 && !requestPath.contains("resetPassword")  && !requestPath.contains("loginProcessNew") && !requestPath.contains("loginProcess")
                 && !requestPath.contains("registernew") && !requestPath.contains("registerProcessNew") && !requestPath.contains("verifyRegistration")
-                && !requestPath.contains("css") && !requestPath.contains("images") && !requestPath.contains("modifyPassword")
-                && !requestPath.contains("forgotPassword"))
+                && !requestPath.contains("css") && !requestPath.contains("images") && !requestPath.contains("modifyPassword") && !requestPath.contains("stockPrice")
+                && !requestPath.contains("forgotPassword")  && !requestPath.contains("portfolio")  && !requestPath.contains("optionsPortfolio"))
         {
             Object usernameObj =  request.getSession().getAttribute("username");
             if(usernameObj == null || usernameObj.equals("")){

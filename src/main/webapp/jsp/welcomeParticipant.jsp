@@ -112,13 +112,13 @@
                     <td>Option Type</td>
                     <td>Strike Price</td>
                     <td>Expiry Date</td>
-                    <td>Number of Lots -  <a href="#" onclick="editPortfolio();">Edit</a></td>
+                    <td>Number of Lots  <input type="submit" id="submit2" name="submit2" onclick="editPortfolio();" value="Edit"></a></td>
                     <td>Entry Price</td>
                     <td>Current Market Price</td>
                     <td>Profit / Loss</td>
                    </tr>
                 </thead>
-                <c:forEach var="participantTransaction" items="${user.participant.participantTransactions}">
+                <c:forEach var="participantTransaction" items="${participant.participantTransactions}">
 
                 <tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
                     <tr>

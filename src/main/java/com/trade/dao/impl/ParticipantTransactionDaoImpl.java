@@ -22,11 +22,11 @@ public class ParticipantTransactionDaoImpl extends BaseDaoImpl implements Partic
     JdbcTemplate jdbcTemplate;
 
     public void createParticipantTransaction(ParticipantTransaction participantTransaction) {
-        String sql = "insert into participant_Transaction (participant_transaction_id,participant_id,option_detail_id,option_type,funds_invested,entry_price,exit_price,lot_count,status,result,exercise_date,linked_transaction_id " +
+        String sql = "insert into participant_transaction (participant_transaction_id,participant_id,option_detail_id,option_type,funds_invested,entry_price,exit_price,lot_count,status,result,exercise_date,linked_transaction_id " +
                 " ) values (?, ? , ?, ?, ? , ?, ?, ? , ?, ?, ? , ? )";
 
         participantTransaction.setParticipantTransactionId(generateId());
-        logger.debug("ParticipantTransaction created with id "+ participantTransaction.getParticipantTransactionId());
+        logger.debug("ParticipantTransaction created with id "+ participantTransaction.getParticipantTransactionId() + " optionDetailId "+participantTransaction.getOptionDetailId() + " type "+ participantTransaction.getOptionType());
         jdbcTemplate.update(sql, participantTransaction.getParticipantTransactionId(), participantTransaction.getParticipantId(), participantTransaction.getOptionDetailId(), participantTransaction.getOptionType(), participantTransaction.getFundsInvested(),participantTransaction.getEntryPrice(),participantTransaction.getExitPrice(),
                 participantTransaction.getLotCount(), participantTransaction.getStatus(), participantTransaction.getResult(), participantTransaction.getExcerciseDate(), participantTransaction.getLinkedTransactionId());
 
@@ -34,7 +34,7 @@ public class ParticipantTransactionDaoImpl extends BaseDaoImpl implements Partic
 
     public void updateParticipantTransaction(ParticipantTransaction participantTransaction) {
 
-        String sql = "update participant_Transaction set option_type = ?,funds_invested = ?, entry_price = ? , exit_price = ?, lot_count = ?,status = ?,result = ?,exercise_date = ?,linked_transaction_id  = ? " +
+        String sql = "update participant_transaction set option_type = ?,funds_invested = ?, entry_price = ? , exit_price = ?, lot_count = ?,status = ?,result = ?,exercise_date = ?,linked_transaction_id  = ? " +
                 " where participant_transaction_id = ? ";
 
          logger.debug("ParticipantTransaction updated with id "+ participantTransaction.getParticipantTransactionId());
@@ -49,6 +49,17 @@ public class ParticipantTransactionDaoImpl extends BaseDaoImpl implements Partic
                 " where participant_id = '" + participantId + "'";
         return jdbcTemplate.query(sql, new ParticipantTransactionMapper());
 
+    }
+
+    public ParticipantTransaction findParticipantTransactionById(String participantTransactionId) {
+        String sql = "select * from participant_transaction pt " +
+                " join option_detail od on od.option_detail_id = pt.option_detail_id" +
+                " where participant_transaction_id = '" + participantTransactionId + "'";
+        List<ParticipantTransaction> participantTransactions =  jdbcTemplate.query(sql, new ParticipantTransactionMapper());
+        if(participantTransactions != null && participantTransactions.size()> 0){
+            return participantTransactions.get(0);
+        }
+        return null;
     }
 
     public void deleteParticipantTransaction(String transcationId) {

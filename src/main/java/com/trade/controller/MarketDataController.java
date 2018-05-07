@@ -220,13 +220,54 @@ public class MarketDataController extends LoginRegistrationBaseController {
         return findModelForWelcomeParticipant(request);
     }
 
+    @RequestMapping(value="/stockPrice",method = RequestMethod.GET)
+    public ModelAndView showStockPrice(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("stockPrice");
+        return mav;
+    }
+
 
     @RequestMapping(value = "/confirmSave", method = RequestMethod.POST)
     public ModelAndView confirmSaveTransactions(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("marketDataView") MarketDataView marketDataView) {
-        String username = (String)request.getSession().getAttribute("username");
         logger.debug("entry into confirmSaveTransactions");
-
-        List<OptionDetail> optionDetails = marketDataView.getOptionDetails();
+        String screenMode = request.getParameter("screenMode");
+        marketDataView.setPreviousScreen(screenMode);
+        List<OptionDetail> optionDetails = new ArrayList<OptionDetail>();
+        //if coming from editPortFolio screen, then choose the ones that were actually modified by the participant
+        if(screenMode != null && screenMode.equals("editPortfolio")){
+            List<OptionDetail> incomingOptionDetails = marketDataView.getOptionDetails();
+            for(OptionDetail optionDetail : incomingOptionDetails){
+                logger.debug("checking participanttransactionid "+ optionDetail.getParticipantTransactionId());
+                ParticipantTransaction existPT = participantService.findParticipantTransactionById(optionDetail.getParticipantTransactionId());
+                int lotCount = existPT.getLotCount();
+                if(OptionsConstants.OPTION_TYPE_CALL.equals(optionDetail.getOptionType())){
+                    if(optionDetail.getCallLotInput() != lotCount){
+                        logger.debug("participanttransactionid "+ optionDetail.getParticipantTransactionId() + " call lotCount has changed to "+optionDetail.getCallLotInput() + " from "+ lotCount);
+                        optionDetail.setCallLotInput( optionDetail.getCallLotInput() - lotCount );
+                        logger.debug("callLotInput set as " + optionDetail.getCallLotInput() + " putLotInput is "+ optionDetail.getPutLotInput());
+                        optionDetails.add(optionDetail);
+                    }
+                    else{
+                        logger.debug("participanttransactionid "+ optionDetail.getParticipantTransactionId() + " call lotCount has not changed");
+                    }
+                }
+                else{
+                    if(optionDetail.getPutLotInput() != lotCount){
+                        logger.debug("participanttransactionid "+ optionDetail.getParticipantTransactionId() + " put lotCount has changed to "+optionDetail.getPutLotInput() + " from "+ lotCount);
+                        optionDetail.setPutLotInput(optionDetail.getPutLotInput() - lotCount);
+                        logger.debug("putLotInput set as " + optionDetail.getPutLotInput() + " callLotInput is "+optionDetail.getCallLotInput());
+                        optionDetails.add(optionDetail);
+                    }
+                    else{
+                        logger.debug("participanttransactionid "+ optionDetail.getParticipantTransactionId() + " put lotCount has not changed");
+                    }
+                }
+            }
+        }
+        else {
+            optionDetails = marketDataView.getOptionDetails();
+        }
+        marketDataView.setOptionDetails(optionDetails);
         if(optionDetails == null || optionDetails.size() == 0){
             logger.debug("no option details present!!!");
         }
@@ -239,17 +280,78 @@ public class MarketDataController extends LoginRegistrationBaseController {
     }
 
     @RequestMapping(value = "/editPortfolio", method = RequestMethod.POST)
-    public ModelAndView editPortfolio(HttpServletRequest request, @ModelAttribute("user") User user) {
+    public ModelAndView editPortfolio(HttpServletRequest request, @ModelAttribute("marketDataView") MarketDataView marketDataView) {
         String username = (String)request.getSession().getAttribute("username");
         User existUser = userService.findUserByUsername(username);
-        logger.debug("entry into editPortfolio");
-        Participant participant = participantService.findParticipantTransactions(existUser.getUserId());
-        logger.debug("participant id is "+  participant.getParticipantId());
+        String screenMode = request.getParameter("screenMode");
+        marketDataView.setPreviousScreen(screenMode);
 
-        user.setParticipant(participant);
-        ModelAndView mav = new ModelAndView("welcomeParticipant");
+        //screenMode indicates where it is routed from. If it came from confirmSave, then merge the data from the confirmSave screen to show the original
+        //input entered by user
+        logger.debug("entry into editPortfolio with screenMode "+screenMode);
+        Participant participant = participantService.findParticipantTransactions(existUser.getUserId());
+        logger.debug("participant id is "+  participant.getParticipantId() + " number of transactions "+ participant.getParticipantTransactions().size());
+         List<ParticipantTransaction> participantTransactions = participant.getParticipantTransactions();
+         List<OptionDetail> optionDetails = new ArrayList<OptionDetail>();
+         for(ParticipantTransaction participantTransaction : participantTransactions){
+
+            if("confirmSave".equals(screenMode)){
+                List<OptionDetail> incomingODs = marketDataView.getOptionDetails();
+                for(OptionDetail incomingOD : incomingODs){
+
+                    if(incomingOD.getParticipantTransactionId().equals(participantTransaction.getParticipantTransactionId())){
+                        logger.debug("incomingOD has PTid "+ incomingOD.getParticipantTransactionId() + " optionType "+incomingOD.getOptionType() + " callLotInput "+incomingOD.getCallLotInput() + " putLotInput " +
+                        + incomingOD.getPutLotInput() + " PT lot count "+ participantTransaction.getLotCount());
+                        if(OptionsConstants.OPTION_TYPE_CALL.equals(incomingOD.getOptionType())){
+                            participantTransaction.setLotCount(participantTransaction.getLotCount() + incomingOD.getCallLotInput());
+                        }
+                        else{
+                            participantTransaction.setLotCount(participantTransaction.getLotCount() + incomingOD.getPutLotInput());
+                        }
+                        logger.debug("after setting - incomingOD has PTid "+ incomingOD.getParticipantTransactionId() + " optionType "+incomingOD.getOptionType() + " callLotInput "+incomingOD.getCallLotInput() + " putLotInput " +
+                                + incomingOD.getPutLotInput() + " PT lot count "+ participantTransaction.getLotCount());
+                    }
+                }
+            }
+             optionDetails.add(convertToOptionDetail(participantTransaction));
+         }
+         logger.debug("no of optiondetails "+ optionDetails.size());
+        marketDataView.setOptionDetails(optionDetails);
+        ModelAndView mav = new ModelAndView("editPortfolio");
         mav.addObject("screenMode",request.getParameter("screenMode"));
         logger.debug("exit from editPortfolio");
         return mav;
+    }
+
+    @RequestMapping(value = "/cancelPortfolioEdit", method = RequestMethod.POST)
+    public ModelAndView cancelPortfolioEdit(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user) {
+        return findModelForWelcomeParticipant(request);
+    }
+
+    private OptionDetail convertToOptionDetail(ParticipantTransaction participantTransaction){
+        logger.debug("converting id : "+ participantTransaction.getParticipantTransactionId());
+        OptionDetail optionDetail = new OptionDetail();
+        optionDetail.setStockPrice(participantTransaction.getCurrentMarketPrice());
+        optionDetail.setStrikePrice(participantTransaction.getStrikePrice());
+        optionDetail.setCallBidPrice(participantTransaction.getCallBidPrice());
+        optionDetail.setParticipantTransactionId(participantTransaction.getParticipantTransactionId());
+        optionDetail.setCallAskPrice(participantTransaction.getCallAskPrice());
+        optionDetail.setPutAskPrice(participantTransaction.getPutAskPrice());
+        optionDetail.setPutBidPrice(participantTransaction.getPutBidPrice());
+        optionDetail.setOptionDetailId(participantTransaction.getOptionDetailId());
+        optionDetail.setExpiryDate(participantTransaction.getExpiryDate());
+        optionDetail.setEntryPrice(participantTransaction.getEntryPrice());
+        optionDetail.setOptionType(participantTransaction.getOptionType());
+        if(OptionsConstants.OPTION_TYPE_CALL.equals(participantTransaction.getOptionType())){
+            optionDetail.setCallLotInput(participantTransaction.getLotCount());
+        }
+        else{
+            optionDetail.setPutLotInput(participantTransaction.getLotCount());
+        }
+        optionDetail.setName(participantTransaction.getStockName());
+        optionDetail.setSymbol(participantTransaction.getSymbol());
+        logger.debug("optiondetailid "+ optionDetail.getOptionDetailId() + " call Lot "+ optionDetail.getCallLotInput() + " put lot "+ optionDetail.getPutLotInput());
+        logger.debug("exiting id : "+ participantTransaction.getParticipantTransactionId());
+        return optionDetail;
     }
 }

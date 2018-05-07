@@ -35,8 +35,6 @@ public class UserServiceImpl implements UserService {
   @Autowired
   public AdminPrivilegeDao adminPrivilegeDao;
 
-  @Autowired
-  public PaymentServiceManager paymentServiceManager;
 
   public void createAdmin(User user) {
     createAdmin(user, OptionsConstants.ROLE_SUPER_ADMIN);

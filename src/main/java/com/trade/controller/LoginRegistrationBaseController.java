@@ -10,6 +10,7 @@ import com.trade.service.UserService;
 import com.trade.util.CountryUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -113,6 +114,7 @@ public class LoginRegistrationBaseController {
         else{
             logger.debug("Number of transactions is "+participantTransactions.size());
         }
+        user.setParticipant(participant);
         mav.addObject("participant",participant);
         mav.addObject("participantTransactions",participantTransactions);
         mav.addObject("screenMode",request.getParameter("screenMode"));

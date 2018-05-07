@@ -30,7 +30,7 @@ public class OptionDetailDaoImpl extends BaseDaoImpl implements OptionDetailDao 
     private static final Logger logger = Logger.getLogger(OptionDetailDaoImpl.class);
 
     public void createOptionDetail(OptionDetail optionDetail) {
-        String sql = "insert into option_Detail (option_detail_id,name,symbol,stock_price,strike_price, expiry_date,call_bid_price, call_ask_price," +
+        String sql = "insert into option_detail (option_detail_id,name,symbol,stock_price,strike_price, expiry_date,call_bid_price, call_ask_price," +
                 " call_volume, call_open_int, call_open_int_change, call_ask_qty, call_bid_qty,call_last_traded_price,call_implied_volatility,call_net_change, put_bid_price, put_ask_price, put_volume, put_open_int, " +
                 " put_open_int_change, put_ask_qty, put_bid_qty ,put_last_traded_price,put_implied_volatility,put_net_change) values (?, ? , ?, ? ,?, ? , ?, ?, ? , ?, ? ,?, ? , ?, ?, ? , ?, ? ,?, ?, ?, ? , ?, ? ,?, ? )";
         optionDetail.setOptionDetailId(generateId());
@@ -44,7 +44,7 @@ public class OptionDetailDaoImpl extends BaseDaoImpl implements OptionDetailDao 
     }
 
     public void updateOptionDetail(OptionDetail optionDetail) {
-        String sql = "update option_Detail set name = ?,symbol   = ?,stock_price  = ?,strike_price  = ?, expiry_date  = ?,call_bid_price  = ?, call_ask_price  = ?," +
+        String sql = "update option_detail set name = ?,symbol   = ?,stock_price  = ?,strike_price  = ?, expiry_date  = ?,call_bid_price  = ?, call_ask_price  = ?," +
                 " call_volume  = ?, call_open_int  = ?, call_open_int_change  = ?, call_ask_qty  = ?, call_bid_qty  = ?,call_last_traded_price = ?,call_implied_volatility = ?,call_net_change = ?,  put_bid_price  = ?, put_ask_price  = ?, put_volume  = ?, put_open_int  = ?, " +
                 " put_open_int_change = ?, put_ask_qty = ?, put_bid_qty = ? ,put_last_traded_price = ? ,put_implied_volatility = ? ,put_net_change = ?  where option_detail_id = ? ";
         optionDetail.setOptionDetailId(generateId());

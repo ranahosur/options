@@ -110,7 +110,7 @@
                         </c:if>
 
                         <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.stockPrice}"/></td>
-                         <form:hidden path="optionDetails[${i.index}].optionDetailId" id="optionDetailId${i.index}" />
+
 
                      </tr>
                     </tbody>
@@ -121,10 +121,10 @@
                         <tr>
                             <td class="ng-binding"> ${optionDetail.name} </td>
                             <td class="ng-binding">${optionDetail.symbol}</td>
-                            <td class="ng-binding">Call</td>
+                            <td class="ng-binding">Put</td>
                             <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.strikePrice}"/></td>
                             <td class="ng-binding">${optionDetail.expiryDate}</td>
-                            <td class="ng-binding">${optionDetail.callLotInput}</td>
+                            <td class="ng-binding">${optionDetail.putLotInput}</td>
                             <c:if test="${(optionDetail.putLotInput < 0)}">
                                 <td class="ng-binding">Sell</td>
                                 <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.putBidPrice}"/></td>
@@ -150,17 +150,27 @@
                       <form:hidden path="optionDetails[${i.index}].expiryDate" id="expiryDate${i.index}" />
                       <form:hidden path="optionDetails[${i.index}].callLotInput" id="callLotInput${i.index}" />
                       <form:hidden path="optionDetails[${i.index}].putLotInput" id="putLotInput${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].participantTransactionId" id="participantTransactionId${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].optionType" id="optionType${i.index}" />
+                  </c:if>
                 </c:forEach>
                 </table>
                 <form:hidden path="selectedStock" id="selectedStock" />
                 <form:hidden path="selectedDate" id="selectedDate" />
                 <input type="hidden" name="screen" value="edit"  />
+                <input type="hidden"  name="screenMode" value="confirmSave"/>
+                <form:hidden path="previousScreen" />
                 <table width="100%"><tr>
 
                         				<td width="25%" align="center">
-
+                                        <c:if test="${marketDataView.previousScreen != 'editPortfolio'}">
                         				 <input type="submit" name="submit2" value="Edit" onClick="getPage('manageMarket');" >
                         				  </td>
+                        				 </c:if>
+                        				 <c:if test="${marketDataView.previousScreen == 'editPortfolio'}">
+                                             <input type="submit" name="submit2" value="Edit" onClick="getPage('editPortfolio');" >
+                                              </td>
+                                          </c:if>
                         				  <td width="10%" align="center">&nbsp;</td>
                         				<td width="25%" align="center">
                                           <input type="submit" name="submit3" value="Trade" onClick="getPage('saveMarket');" >

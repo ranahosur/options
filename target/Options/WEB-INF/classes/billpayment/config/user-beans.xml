@@ -12,7 +12,7 @@
 
 	">
 
-	<context:component-scan base-package="billpayment.billpayment" />
+	<context:component-scan base-package="com.trade" />
 	<context:annotation-config />
 
 	<bean id="userService" class="com.trade.service.UserServiceImpl" />
@@ -20,9 +20,6 @@
 	<bean id="userDao" class="com.trade.dao.impl.UserDaoImpl" />
 	<bean id="userRoleDao" class="com.trade.dao.impl.UserRoleDaoImpl" />
 	<bean id="roleDao" class="com.trade.dao.impl.RoleDaoImpl" />
-	<bean id="userPaymentServiceDao" class="com.trade.dao.impl.UserPaymentServiceDaoImpl" />
-	<bean id="paymentServiceDao" class="com.trade.dao.impl.PaymentServiceDaoImpl" />
-	<bean id="paymentServiceManager" class="com.trade.service.PaymentServiceManagerImpl" />
 	<bean id="teamDao" class="com.trade.dao.impl.TeamDaoImpl" />
 	<bean id="teamMemberDao" class="com.trade.dao.impl.TeamMemberDaoImpl" />
 	<bean id="adminPrivilegeDao" class="com.trade.dao.impl.AdminPrivilegeDaoImpl" />
@@ -39,9 +36,9 @@
 	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<!--<property name="url" value="jdbc:mysql://trade.cqsstovmoqxl.us-east-2.rds.amazonaws.com:3306/optionDetails" />
-		<property name="username" value="ranahosur" />
-		<property name="password" value="viha5439" />-->
+		<!--<property name="url" value="jdbc:mysql://aa1u1nc83bk8g9l.cqsstovmoqxl.us-east-2.rds.amazonaws.com/options" />-->
+		<!--<property name="username" value="ranahosur" />-->
+		<!--<property name="password" value="viha5439" />-->
 		<property name="url" value="jdbc:mysql://localhost:3306/options" />
 		<property name="username" value="root" />
 		<property name="password" value="raghu1" />

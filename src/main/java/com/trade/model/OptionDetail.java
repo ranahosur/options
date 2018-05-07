@@ -36,6 +36,9 @@ public class OptionDetail {
 
     private int callLotInput;
     private int putLotInput;
+    private BigDecimal entryPrice;
+    private String participantTransactionId;
+    private String optionType;
 
     public String getOptionDetailId() {
         return optionDetailId;
@@ -267,5 +270,29 @@ public class OptionDetail {
 
     public void setPutLotInput(int putLotInput) {
         this.putLotInput = putLotInput;
+    }
+
+    public BigDecimal getEntryPrice() {
+        return entryPrice;
+    }
+
+    public void setEntryPrice(BigDecimal entryPrice) {
+        this.entryPrice = entryPrice;
+    }
+
+    public String getParticipantTransactionId() {
+        return participantTransactionId;
+    }
+
+    public void setParticipantTransactionId(String participantTransactionId) {
+        this.participantTransactionId = participantTransactionId;
+    }
+
+    public String getOptionType() {
+        return optionType;
+    }
+
+    public void setOptionType(String optionType) {
+        this.optionType = optionType;
     }
 }

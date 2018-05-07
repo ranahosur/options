@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import com.trade.dao.*;
 import com.trade.model.*;
-import com.trade.service.PaymentServiceManager;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -46,8 +45,6 @@ public class UserServiceTest {
   @Autowired
   public AdminPrivilegeDao adminPrivilegeDao;
 
-  @Autowired
-  public PaymentServiceManager paymentServiceManager;
 
   @Before
   public void setUp() throws Exception {

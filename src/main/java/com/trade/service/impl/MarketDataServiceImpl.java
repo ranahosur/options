@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class MarketDataServiceImpl implements MarketDataService {
@@ -20,6 +22,22 @@ public class MarketDataServiceImpl implements MarketDataService {
 
     @Autowired
     public OptionDetailDao optionDetailDao;
+
+
+    @Override
+    public List<OptionDetail> findOptionDetailsAll() {
+        return optionDetailDao.findOptionDetailAll();
+    }
+
+    @Override
+    public List<OptionDetail> findOptionDetailBySymbol(String symbol) {
+        return optionDetailDao.findOptionDetailBySymbol(symbol);
+    }
+
+    @Override
+    public List<OptionDetail> findOptionDetailBySymbolExpiryDate(String symbol, Date expiryDate) {
+        return optionDetailDao.findOptionDetailBySymbolExpiryDate(symbol,expiryDate);
+    }
 
     public void uploadMarketData(String fileName) {
 

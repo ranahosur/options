@@ -56,8 +56,8 @@
             </div>
             <div class="header-block nav-area">
                 <ul class="group">
-                    <li class="active" ><a ng-href="/welcomeSAdmin"  href="#" onClick="getPage2('welcomeAdmin');">Current Portfolio</a></li>
-                    <li ><a ng-href="/logout"  href="#" onClick="getPage2('manageMarket');">Trade</a></li>
+                    <li><a ng-href="/welcomeSAdmin"  href="#" onClick="getPage2('welcomeParticipant');">Current Portfolio</a></li>
+                    <li class="active" ><a ng-href="/logout"  href="#" onClick="getPage2('manageMarket');">Trade</a></li>
                     <li><a href="#">Transaction History</a></li>
 
                 </ul>
@@ -73,20 +73,7 @@
     <main>
         <section class="content">
         <div class="header-block misc-area">
-        <table width="60%" align="center">
-                <tr><td>Subscription Details</td></tr>
-                </table>
-
-        </div>
-        <table width="60%" align="center">
-                        <tr><td>Total Available Funds ${participant.totalFunds}</td></tr>
-         </table>
-
            <div class="table-data sort">
-
-
-
-
                 <table cellpadding="0" cellspacing="0">
                 <thead>
                    <tr>
@@ -96,16 +83,16 @@
                     <td>Strike Price</td>
                     <td>Expiry Date</td>
                     <td>Number of Lots</td>
-                    <td>Bid Price</td>
-                    <td>Ask Price</td>
+                    <td>Transaction Type</td>
+                    <td>Entry Price</td>
                     <td>Current Stock Price</td>
 
                    </tr>
                 </thead>
                 <c:forEach var="optionDetail" items="${marketDataView.optionDetails}" varStatus="i" begin="0" >
                     <c:if test="${(optionDetail.callLotInput < 0)  || (optionDetail.callLotInput > 0)}">
-                <!-- ngRepeat: xx in vollist --><tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
-                    <tr>
+                    <tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
+                        <tr>
 
                         <td class="ng-binding"> ${optionDetail.name} </td>
                         <td class="ng-binding">${optionDetail.symbol}</td>
@@ -113,42 +100,84 @@
                         <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.strikePrice}"/></td>
                         <td class="ng-binding">${optionDetail.expiryDate}</td>
                         <td class="ng-binding">${optionDetail.callLotInput}</td>
-                        <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.callBidPrice}"/></td>
-                        <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.callAskPrice}"/></td>
+                        <c:if test="${(optionDetail.callLotInput < 0)}">
+                            <td class="ng-binding">Sell</td>
+                            <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.callBidPrice}"/></td>
+                        </c:if>
+                        <c:if test="${(optionDetail.callLotInput > 0)}">
+                            <td class="ng-binding">Buy</td>
+                            <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.callAskPrice}"/></td>
+                        </c:if>
+
                         <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.stockPrice}"/></td>
-                         <form:hidden path="optionDetails[${i.index}].optionDetailId" id="optionDetailId${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].callBidPrice" id="callBidPrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].callAskPrice" id="callAskPrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].putAskPrice" id="putAskPrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].putBidPrice" id="putBidPrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].name" id="name${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].symbol" id="symbol${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].strikePrice" id="strikePrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].stockPrice" id="stockPrice${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].expiryDate" id="expiryDate${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].callLotInput" id="callLotInput${i.index}" />
-                         <form:hidden path="optionDetails[${i.index}].putLotInput" id="putLotInput${i.index}" />
-                    </tr>
-                </tbody>
+
+
+                     </tr>
+                    </tbody>
                 </c:if>
+
+                <c:if test="${(optionDetail.putLotInput < 0)  || (optionDetail.putLotInput > 0)}">
+                    <tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
+                        <tr>
+                            <td class="ng-binding"> ${optionDetail.name} </td>
+                            <td class="ng-binding">${optionDetail.symbol}</td>
+                            <td class="ng-binding">Put</td>
+                            <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.strikePrice}"/></td>
+                            <td class="ng-binding">${optionDetail.expiryDate}</td>
+                            <td class="ng-binding">${optionDetail.putLotInput}</td>
+                            <c:if test="${(optionDetail.putLotInput < 0)}">
+                                <td class="ng-binding">Sell</td>
+                                <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.putBidPrice}"/></td>
+                            </c:if>
+                            <c:if test="${(optionDetail.putLotInput > 0)}">
+                                <td class="ng-binding">Buy</td>
+                                <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.putAskPrice}"/></td>
+                            </c:if>
+                            <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${optionDetail.stockPrice}"/></td>
+                        </tr>
+                    </tbody>
+                </c:if>
+                <c:if test="${(optionDetail.putLotInput < 0)  || (optionDetail.putLotInput > 0) || (optionDetail.callLotInput < 0)  || (optionDetail.callLotInput > 0)}">
+                     <form:hidden path="optionDetails[${i.index}].optionDetailId" id="optionDetailId${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].callBidPrice" id="callBidPrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].callAskPrice" id="callAskPrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].putAskPrice" id="putAskPrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].putBidPrice" id="putBidPrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].name" id="name${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].symbol" id="symbol${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].strikePrice" id="strikePrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].stockPrice" id="stockPrice${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].expiryDate" id="expiryDate${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].callLotInput" id="callLotInput${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].putLotInput" id="putLotInput${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].participantTransactionId" id="participantTransactionId${i.index}" />
+                      <form:hidden path="optionDetails[${i.index}].optionType" id="optionType${i.index}" />
+                  </c:if>
                 </c:forEach>
                 </table>
                 <form:hidden path="selectedStock" id="selectedStock" />
                 <form:hidden path="selectedDate" id="selectedDate" />
                 <input type="hidden" name="screen" value="edit"  />
+                <input type="hidden"  name="screenMode" value="confirmSave"/>
+                <form:hidden path="previousScreen" />
                 <table width="100%"><tr>
 
                         				<td width="25%" align="center">
-
-                        				 <input type="submit" name="submit2" value="edit" onClick="getPage('manageMarket');" >
+                                        <c:if test="${marketDataView.previousScreen != 'editPortfolio'}">
+                        				 <input type="submit" name="submit2" value="Edit" onClick="getPage('manageMarket');" >
                         				  </td>
+                        				 </c:if>
+                        				 <c:if test="${marketDataView.previousScreen == 'editPortfolio'}">
+                                             <input type="submit" name="submit2" value="Edit" onClick="getPage('editPortfolio');" >
+                                              </td>
+                                          </c:if>
                         				  <td width="10%" align="center">&nbsp;</td>
                         				<td width="25%" align="center">
-                                          <input type="submit" name="submit3" value="save" onClick="getPage('saveMarket');" >
+                                          <input type="submit" name="submit3" value="Trade" onClick="getPage('saveMarket');" >
                         	            </td>
                         	             <td width="10%" align="center">&nbsp;</td>
                                         <td width="25%" align="center">
-                                          <input type="submit" name="submit3" value="cancel" onClick="getPage('welcomeParticipant');" >
+                                          <input type="submit" name="submit3" value="Cancel" onClick="getPage('welcomeParticipant');" >
                                         </td>
                         		</tr></table>
 </form:form>

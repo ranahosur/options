@@ -14,4 +14,5 @@ public interface ParticipantTransactionDao {
 
     void deleteParticipantTransaction(String transacationId);
 
+    ParticipantTransaction findParticipantTransactionById(String participantTransactionId);
 }

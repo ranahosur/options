@@ -29,6 +29,7 @@ import java.util.List;
 public class LoginController extends LoginRegistrationBaseController {
 
   private static final Logger logger = Logger.getLogger(LoginController.class);
+
   @Autowired
   UserService userService;
 

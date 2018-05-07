@@ -41,6 +41,10 @@
             document.ConsData.submit();
             }
 
+            function editPortfolio(){
+                document.ConsData.screenMode.value="edit";
+                getPage2('editPortfolio');
+            }
           </script>
     <body style="" class="page-vol-surface">
         <form:form name="ConsData" modelAttribute="user" action="welcomeParticipant" onSubmit='return validate()'>
@@ -56,7 +60,7 @@
             </div>
             <div class="header-block nav-area">
                 <ul class="group">
-                    <li class="active" ><a ng-href="/welcomeSAdmin"  href="#" onClick="getPage2('welcomeAdmin');">Current Portfolio</a></li>
+                    <li class="active" ><a ng-href="#"  href="#" onClick="getPage2('welcomeParticipant');">Current Portfolio</a></li>
                     <li ><a ng-href="/logout"  href="#" onClick="getPage2('manageMarket');">Trade</a></li>
                     <li><a href="#">Transaction History</a></li>
 
@@ -108,16 +112,15 @@
                     <td>Option Type</td>
                     <td>Strike Price</td>
                     <td>Expiry Date</td>
-                    <td>Number of Lots</td>
+                    <td>Number of Lots  <input type="submit" id="submit2" name="submit2" onclick="editPortfolio();" value="Edit"></a></td>
                     <td>Entry Price</td>
                     <td>Current Market Price</td>
                     <td>Profit / Loss</td>
-                    <td>Action</td>
                    </tr>
                 </thead>
-                <c:forEach var="participantTransaction" items="${participantTransactions}">
+                <c:forEach var="participantTransaction" items="${participant.participantTransactions}">
 
-                <!-- ngRepeat: xx in vollist --><tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
+                <tbody ng-model="forfutref" ng-repeat="xx in vollist" class="ng-pristine ng-untouched ng-valid ng-scope">
                     <tr>
 
                         <td class="ng-binding"> ${participantTransaction.stockName} </td>
@@ -129,17 +132,15 @@
                         <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${participantTransaction.entryPrice}"/></td>
                         <td class="ng-binding"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${participantTransaction.currentMarketPrice}"/></td>
                         <td class="ng-binding">${participantTransaction.profitLoss}</td>
-                        <td><button type="button" onClick="getPage('manageTransaction','${participantTransaction.participantTransactionId}');">View/Edit</button></td>
+
                     </tr>
                 </tbody>
                 </c:forEach>
                 </table>
                 </c:if>
                 <input type="hidden" name="selectParticipantTransactionId"  />
+                <input type="hidden" name="screenMode" value="${screenMode}"  />
 </form:form>
-
-
-
 </table></div></section></main></div></div></div>
 
 </body></html>

@@ -1,4 +1,10 @@
-com\trade\ParticipantServiceTest.class
 com\trade\UserServiceTest.class
 com\trade\DAOTest.class
+com\trade\PortfolioServiceTest$AbstractTestSessionHandler.class
+com\trade\PortfolioServiceTest$2$1.class
 com\trade\MarketServiceTest.class
+com\trade\PortfolioServiceTest$2.class
+com\trade\PortfolioServiceTest.class
+com\trade\ParticipantServiceTest.class
+com\trade\PortfolioServiceTest$1$1.class
+com\trade\PortfolioServiceTest$1.class

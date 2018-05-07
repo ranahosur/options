@@ -122,4 +122,8 @@ public class ParticipantServiceImpl implements ParticipantService {
         logger.debug("Exit from populateParticipantTransaction");
         return participantTransaction;
     }
+
+    public ParticipantTransaction findParticipantTransactionById(String participantTransactionId) {
+        return participantTransactionDao.findParticipantTransactionById(participantTransactionId);
+    }
 }

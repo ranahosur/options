@@ -245,6 +245,8 @@
                 </c:if>
 <input type="hidden" name="selectAdminPrivilegeId"  />
 <input type="hidden" name="submitAction">
+<input type="hidden"  name="screenMode" value="manageMarket"/>
+
 </form:form>
 
 

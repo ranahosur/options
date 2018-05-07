@@ -6,6 +6,7 @@ public class MarketDataView {
 
     private String selectedDate;
     private String selectedStock;
+    private String previousScreen;
 
     List<OptionDetail> optionDetails;
 
@@ -31,5 +32,13 @@ public class MarketDataView {
 
     public void setOptionDetails(List<OptionDetail> optionDetails) {
         this.optionDetails = optionDetails;
+    }
+
+    public String getPreviousScreen() {
+        return previousScreen;
+    }
+
+    public void setPreviousScreen(String previousScreen) {
+        this.previousScreen = previousScreen;
     }
 }
